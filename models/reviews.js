@@ -1,0 +1,30 @@
+// Packages
+const express = require('express')
+const router = express.Router()
+
+const mongoose = require('mongoose')
+
+// Model
+module.exports = mongoose.model('reviews', {
+  author: {
+    type: id,
+    required: true,
+    reference: users
+  },
+  date: {
+    type: date,
+    required: true
+  },
+  description: {
+    type: text,
+    required: true
+  },
+  house: {
+    type: id,
+    required: true,
+    reference: houses
+  },
+  rating: {
+    type: number
+  }
+})
