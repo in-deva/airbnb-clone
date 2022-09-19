@@ -6,7 +6,7 @@ const router = express.Router()
 router.get('/', async (req, res) => {
   try {
     console.log('index ok')
-    // res.redirect('/houses')
+    res.redirect('/houses')
   } catch (err) {
     res.redirect('/error')
   }
