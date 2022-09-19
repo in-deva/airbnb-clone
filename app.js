@@ -47,23 +47,22 @@ require('./express-sessions')(app)
 // Routes
 
 // main
-app.get('/', (req, res) => {
-  res.render('test')
-})
+app.use('/', require('./controllers/index'))
+
 // auth
-app.use('/', require('./controllers/auth'))
+app.use('/auth', require('./controllers/auth'))
 
 // bookings
-app.use('/', require('./controllers/bookings'))
+app.use('/bookings', require('./controllers/bookings'))
 
 // houses
-app.use('/', require('./controllers/houses'))
+app.use('/houses', require('./controllers/houses'))
 
 // profile
-app.use('/', require('./controllers/profile'))
+app.use('/profile', require('./controllers/profile'))
 
 // reviews
-app.use('/', require('./controllers/reviews'))
+app.use('/reviews', require('./controllers/reviews'))
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
