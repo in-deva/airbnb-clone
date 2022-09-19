@@ -6,6 +6,7 @@ const router = express.Router()
 router.post('/', async (req, res) => {
   try {
     console.log('bookings ok')
+    // res.render('../views/booking')
   } catch (err) {
     res.redirect('/error')
   }

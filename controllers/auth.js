@@ -6,6 +6,8 @@ const router = express.Router()
 router.get('/', async (req, res) => {
   try {
     console.log('auth ok')
+    // render
+    // res.render('../views/houses/list')
   } catch (err) {
     res.redirect('/error')
   }
@@ -15,6 +17,8 @@ router.get('/', async (req, res) => {
 router.get('/login', async (req, res) => {
   try {
     console.log('ok')
+    // render
+    res.render('../views/login')
   } catch (err) {
     res.redirect('/error')
   }
@@ -24,6 +28,8 @@ router.get('/login', async (req, res) => {
 router.get('/signup', async (req, res) => {
   try {
     console.log('ok')
+    // render
+    res.render('../views/signup')
   } catch (err) {
     res.redirect('/error')
   }
@@ -51,6 +57,7 @@ router.post('/signup', async (req, res) => {
 router.get('/logout', async (req, res) => {
   try {
     console.log('ok')
+    res.render('../views/logout')
   } catch (err) {
     res.redirect('/error')
   }

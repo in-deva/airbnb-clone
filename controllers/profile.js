@@ -6,6 +6,7 @@ const router = express.Router()
 router.get('/', async (req, res) => {
   try {
     console.log('profile ok')
+    res.render('../views/profile')
   } catch (err) {
     res.redirect('/error')
   }

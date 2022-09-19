@@ -6,6 +6,7 @@ const router = express.Router()
 router.get('/', async (req, res) => {
   try {
     console.log('houses ok')
+    res.render('../views/houses/list')
   } catch (err) {
     res.redirect('/error')
   }
@@ -15,6 +16,7 @@ router.get('/', async (req, res) => {
 router.get('/create', async (req, res) => {
   try {
     console.log('ok')
+    res.render('../views/houses/create')
   } catch (err) {
     res.redirect('/error')
   }
@@ -24,6 +26,7 @@ router.get('/create', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     console.log('ok')
+    res.render('../views/houses/one')
   } catch (err) {
     res.redirect('/error')
   }
@@ -33,6 +36,7 @@ router.get('/:id', async (req, res) => {
 router.get('/:id/edit', async (req, res) => {
   try {
     console.log('ok')
+    res.render('../views/houses/edit')
   } catch (err) {
     res.redirect('/error')
   }
