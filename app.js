@@ -50,6 +50,10 @@ require('./express-sessions')(app)
 // Create your routes here
 // ::::
 
+app.get('/', (req, res) => {
+  res.render('test')
+})
+
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404))
