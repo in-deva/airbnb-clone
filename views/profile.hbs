@@ -1,0 +1,138 @@
+  <body>
+    <!-- topbar -->
+    <nav class="navbar">
+      <!-- bg-light"> -->
+      <div class="container">
+        <a
+          href="file:///C:/Users/User/OneDrive/00%20Everything/01%20Files/01%20Main/01%20Core/01%20Life/02%20Professional/03%20Web%20Development/11%20Tortuga%20Coders/Projects/02%20Airbnb%20Clone/Airbnb%20Clone/project-airbnb-html-start/profile.html"
+        >
+          <img
+            class="navbar-brand logo"
+            src="./images/logo-airbnb.png"
+            alt="airbnb logo"
+          />
+        </a>
+        <!-- !!! make image and text align in account button -->
+        <div class="d-flex-inline">
+          <a
+            href="..."
+            class="btn btn-outline-secondary d-flex-inline align-items-center me-2"
+            ><img
+              src="https://randomuser.me/api/portraits/men/11.jpg"
+              alt=""
+              class="avatar-img"
+            />
+            <span>Account</span></a
+          >
+          <a href="..." class="btn btn-outline-secondary">Logout</a>
+        </div>
+      </div>
+    </nav>
+    <!-- end topbar -->
+    <!-- houses form -->
+    <!-- !!! how to make sure all cards go to the same height always? -->
+    <div class="container text-center">
+      <div class="row text-start">
+        <div class="col-4">
+          <!-- profile section -->
+          <h2 class="border-bottom pb-3">Profile</h2>
+          <form>
+            <!-- replace name with proper input -->
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"
+                >Full Name</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"
+                >Email address</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+              />
+              <div id="emailHelp" class="form-text">
+                We'll never share your email with anyone else.
+              </div>
+            </div>
+            <div class="mb-3 form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="exampleCheck1"
+              />
+              <label class="form-check-label" for="exampleCheck1"
+                >Check me out</label
+              >
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <!-- end profile section -->
+        <div class="col-8 ps-5">
+          <!-- listings section -->
+          <h2 class="border-bottom mb-3 pb-3">My Listings</h2>
+          <button type="button" class="btn btn-primary mb-3">
+            List a House
+          </button>
+          <!-- no listings -->
+          <div class="card mb-3">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">You don't have any houses listed</li>
+            </ul>
+          </div>
+          <!-- with listings -->
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="..." class="img-fluid rounded-start" alt="..." />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="..." class="img-fluid rounded-start" alt="..." />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end listing section -->
+      </div>
+    </div>
+  </body>
+</html>

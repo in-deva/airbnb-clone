@@ -1,0 +1,57 @@
+/*
+!!! Project to do
+
+check all forms, give all form elements a name
+take background image off of body on login/signup, put on a div
+
+ */
+
+* {
+  /* background-color: rgba(255, 0, 0, 0.2); */
+}
+
+.logo {
+  width: 150px;
+}
+
+/* !!! change to avatar-img-sm */
+.avatar-img {
+  border-radius: 100%;
+  width: 20px;
+}
+
+.btn > .avatar-img + span {
+  vertical-align: bottom;
+}
+
+.avatar-img-lg {
+  border-radius: 100%;
+  width: 60px;
+}
+
+.background-image {
+  background-image: url(https://res.cloudinary.com/dsko6ntfj/image/upload/v1642399115/portal/web%20development%20beginners/05%20Project%20Airbnb/assets/thailand.jpg);
+  margin: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.background-image > div {
+  height: 100vh;
+}
+
+.background-image > div > div {
+  height: 100vh;
+}
+
+/* !!! Style this button how I want it */
+/* <button type="submit" class="btn btn-primary">Signup</button> */
+.btn-primary {
+  background-color: orange;
+}
+
+/* !!! style these */
+/* class="fa-solid fa-thumbs-up" */
+/* <i class="fa-solid fa-thumbs-down"></i> */
+/* <i class="fa-solid fa-location-dot"></i> Sometimes green (same colour as reviews thumbs up & buttons) */
+/* could make a class 'green' or something */
