@@ -115,7 +115,6 @@ router.post('/', async (req, res) => {
         let house = await Houses.findOne(req.body)
         console.log(house)
         console.log(house._id)
-        // !!! replace this with a redirect to the get /:id route straight (idk how this is different yet but ill leave this here)
         res.redirect(`houses/${house._id}`)
       } catch (err) {
         console.log('nah the form fucked it mate')

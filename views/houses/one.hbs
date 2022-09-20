@@ -1,7 +1,5 @@
 <body>
-  <!-- nav -->
 	{{> nav}}
-  <!-- house form -->
   <!-- !!! make full width, take out container -->
   <!-- !!! how to make sure all cards go to the same height always? -->
   <!-- image pane -->
@@ -9,26 +7,30 @@
   <div class="container text-center">
     <div class="row">
       <!-- large image -->
+			<!-- first photo in house.photos[0] -->
       <div class="col">
         <img
           class="img-lg img-fluid"
-          src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+          src="{{house.photos.[0]}}"
           alt=""
         />
       </div>
       <!-- 3*3 image grid -->
+			<!-- for each image in house.photos  -->
       <!-- !!! how to center  this within the about grid column? -->
       <div class="col d-flex align-items-center">
         <div class="container">
           <div class="row row-cols-3">
-            <div class="col">
-              <img
-                class="img-lg img-fluid p-1"
-                src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
-                alt=""
-              />
-            </div>
-            <div class="col">
+						{{#each house.photos as |photo|}}
+	            <div class="col">
+	              <img
+	                class="img-lg img-fluid p-1"
+	                src={{photo}}
+	                alt=""
+	              />
+	            </div>
+						{{/each}}
+            <!-- <div class="col">
               <img
                 class="img-sm img-fluid p-1"
                 src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_02.png"
@@ -84,7 +86,7 @@
                 src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295019/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_09.png"
                 alt=""
               />
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -100,18 +102,18 @@
           <div class="col" name="main-page">
             <!-- listing details -->
             <div class="" name="listing-details">
-              <h1 class="border-bottom pb-3">Luxury Villa in Chaweng</h1>
+              <h1 class="border-bottom pb-3">{{house.title}}</h1>
               <!-- location/rooms -->
               <div class="container mx-3 my-3">
                 <div class="row">
                   <div class="col">
                     <span>
                       <i class="fa-solid fa-location-dot"></i>
-                      Location
+                      {{house.location}}
                     </span>
                   </div>
                   <div class="col">
-                    Rooms
+                    {{house.rooms}}
                   </div>
                 </div>
               </div>
@@ -128,22 +130,14 @@
                   <!-- !!! align text left, text formatting smaller on 'hosted by' -->
                   <div class="col">
                     <div>Hosted by</div>
-                    <div>Host Name</div>
+                    <div>Populate host relation then pull host name</div>
                   </div>
                 </div>
               </div>
               <!--  -->
               <div class="mt-3 mb-5">
                 <p>
-                  This property is really cool you should pay a lot to stay
-                  here This property is really cool you should pay a lot to
-                  stay here This property is really cool you should pay a lot
-                  to stay here This property is really cool you should pay a
-                  lot to stay here This property is really cool you should pay
-                  a lot to stay here This property is really cool you should
-                  pay a lot to stay here This property is really cool you
-                  should pay a lot to stay here This property is really cool
-                  you should pay a lot to stay here
+                  {{house.description}}
                 </p>
               </div>
             </div>
@@ -207,7 +201,8 @@
       <div class="col-4 offset-1">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Amount per night</h5>
+            <h5 class="card-title">{{house.price}}</h5>
+						<!-- !!^above wants to be part of a string for $ per night added -->
             <h6 class="card-subtitle mb-2 text-muted">
               <span>
                 <i class="fa-solid fa-thumbs-up mx-2 my-2"></i> X
