@@ -7,35 +7,35 @@ const ObjectId = mongoose.Schema.Types.ObjectId
 
 // Model
 module.exports = mongoose.model('houses', {
+  title: {
+    type: String,
+    required: true
+  },
   description: {
     type: String,
-    required: true
-  },
-  host: {
-    type: id,
-    required: true,
-    reference: users
-    // formatting correct on reference? !!!
-  },
-  location: {
-    type: String,
-    required: true
-  },
-  photos: {
-    type: []
-    // array 'of text'? !!!
-  },
-  price: {
-    type: number,
     required: true
   },
   rooms: {
     type: number,
     required: true
   },
-  title: {
+  location: {
     type: String,
     required: true
+  },
+  price: {
+    type: number,
+    required: true
+  },
+  photos: {
+    type: []
+    // array 'of text'? !!!
+  },
+  host: {
+    type: id,
+    required: true,
+    reference: users
+    // formatting correct on reference? !!!
   }
 })
 

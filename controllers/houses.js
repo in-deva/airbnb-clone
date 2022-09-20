@@ -87,7 +87,11 @@ router.post('/', async (req, res) => {
     console.log('post ok')
     if (req.isAuthenticated()) {
       console.log('authed')
+      console.log('and now we are here')
+      console.log(req.body)
       // res.render('../views/houses/??')
+      // code here from the crate a house form to input it into db
+      // houses folder using houses model
     } else {
       console.log('not logged in')
       res.redirect('/auth/login')
