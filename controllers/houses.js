@@ -22,11 +22,7 @@ router.get('/', async (req, res) => {
         auth: req.isAuthenticated()
       })
     } else {
-      // !!! is there a better way to do this?
-      res.render('../views/houses/list', {
-        user: undefined,
-        auth: undefined
-      })
+      res.render('../views/houses/list')
     }
   } catch (err) {
     console.log('failed on houses route')
