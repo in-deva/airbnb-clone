@@ -101,8 +101,16 @@ router.post('/signup', async (req, res) => {
 // Get logout
 router.get('/logout', async (req, res) => {
   try {
-    console.log('ok')
-    res.render('../views/logout')
+    console.log('logout ok')
+    req.logout()
+    req.session.destroy(err => {
+      if (err) {
+        next(err)
+      }
+      res.clearCookie('connect.sid')
+      console.log('logged out')
+      res.redirect('/auth/login')
+    })
   } catch (err) {
     res.redirect('/error')
   }
