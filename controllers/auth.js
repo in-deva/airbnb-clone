@@ -51,7 +51,6 @@ router.post('/login', async (req, res) => {
         if (err) {
           throw 'shit'
         }
-        res.redirect('/houses')
         // console.log('woo. what`s it mean now then')
         // if (req.isAuthenticated()) {
         //   console.log('authed')
@@ -59,11 +58,11 @@ router.post('/login', async (req, res) => {
         //   console.log('nat authed')
         // }
         console.log('logged in')
+        res.redirect('../houses')
       })
     } else {
       console.log('uh oh - throw email/pw error here')
     }
-    console.log(match)
   } catch (err) {
     res.redirect('/error')
   }

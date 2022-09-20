@@ -8,6 +8,7 @@ router.get('/', async (req, res) => {
     console.log('houses ok')
     res.render('../views/houses/list')
   } catch (err) {
+    console.log('failed on houses route')
     res.redirect('/error')
   }
 })
@@ -15,8 +16,14 @@ router.get('/', async (req, res) => {
 // Get create
 router.get('/create', async (req, res) => {
   try {
-    console.log('ok')
-    res.render('../views/houses/create')
+    console.log('create ok')
+    if (req.isAuthenticated()) {
+      res.render('../views/houses/create')
+      console.log('authed')
+    } else {
+      console.log('not logged in')
+      res.redirect('/error')
+    }
   } catch (err) {
     res.redirect('/error')
   }
