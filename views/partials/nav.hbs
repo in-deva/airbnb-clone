@@ -11,18 +11,27 @@
 			/>
 		</a>
 		<!-- !!! make image and text align in account button -->
+		<!-- if logged in -->
+		{{#if auth}}
+			<div class="d-flex-inline">
+				<a
+					href="..."
+					class="btn btn-outline-secondary d-flex-inline align-items-center me-2"
+					><img
+						src="https://randomuser.me/api/portraits/men/11.jpg"
+						alt=""
+						class="avatar-img"
+					/>
+					<span>{{user}}</span></a
+				>
+				<a href="/auth/logout" class="btn btn-outline-secondary">Logout</a>
+			</div>
+		{{/if}}
+		<!-- if not logged in -->
+		{{#unless auth}}
 		<div class="d-flex-inline">
-			<a
-				href="..."
-				class="btn btn-outline-secondary d-flex-inline align-items-center me-2"
-				><img
-					src="https://randomuser.me/api/portraits/men/11.jpg"
-					alt=""
-					class="avatar-img"
-				/>
-				<span>{{user}}</span></a
-			>
-			<a href="/auth/logout" class="btn btn-outline-secondary">Logout</a>
+			<a href="/auth/login" class="btn btn-outline-secondary">Login</a>
 		</div>
+		{{/unless}}
 	</div>
 </nav>

@@ -6,13 +6,28 @@ const router = express.Router()
 router.get('/', async (req, res) => {
   try {
     console.log('houses ok')
-    let user = await req.user
+    // console.log(req.user)
+    // if (req.user) {
+    //   let userName = req.user
+    // } else {
+    //   let userName = undefined
+    // }
+    // console.log(req.user.name)
+    // let user = await req.user
     // console.log(user.name)
     // console.log(req.isAuthenticated())
-    res.render('../views/houses/list', {
-      user: req.user.name,
-      auth: req.isAuthenticated
-    })
+    if (req.isAuthenticated()) {
+      res.render('../views/houses/list', {
+        user: req.user.name,
+        auth: req.isAuthenticated()
+      })
+    } else {
+      // !!! is there a better way to do this?
+      res.render('../views/houses/list', {
+        user: undefined,
+        auth: undefined
+      })
+    }
   } catch (err) {
     console.log('failed on houses route')
     res.redirect('/error')
