@@ -9,6 +9,7 @@
         <!-- profile section -->
         <h2 class="border-bottom pb-3">Profile</h2>
         <form>
+					<!-- !!! why the fuck have I made this a form?? -->
           <!-- replace name with proper input -->
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label"
@@ -52,9 +53,12 @@
       <div class="col-8 ps-5">
         <!-- listings section -->
         <h2 class="border-bottom mb-3 pb-3">My Listings</h2>
-        <button type="button" class="btn btn-primary mb-3">
-          List a House
-        </button>
+				<a href="houses/create">
+        	<button class="btn btn-primary mb-3">
+          	List a House
+        	</button>
+				</a>
+				<!-- !!! handlebars if logic required here -->
         <!-- no listings -->
         <div class="card mb-3">
           <ul class="list-group list-group-flush">
