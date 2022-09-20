@@ -2,7 +2,7 @@
 const express = require('express')
 const router = express.Router()
 
-const users = require('../models/users')
+const Users = require('../models/users')
 
 // Root
 router.get('/', async (req, res) => {
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 // Get login
 router.get('/login', async (req, res) => {
   try {
-    console.log('ok')
+    console.log('ok its this one')
     // render
     res.render('../views/login')
   } catch (err) {
@@ -40,7 +40,16 @@ router.get('/signup', async (req, res) => {
 // Post login
 router.post('/login', async (req, res) => {
   try {
-    console.log('login ok')
+    // console.log('login okkkkkk')
+    // console.log(req.body)
+    // find user with email and password match
+    let match = await Users.findOne(req.body)
+    if (match) {
+      console.log('its a match - now log the fuck in')
+    } else {
+      console.log('uh oh - throw email/pw error here')
+    }
+    console.log(match)
   } catch (err) {
     res.redirect('/error')
   }
