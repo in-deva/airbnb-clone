@@ -64,6 +64,9 @@ router.get('/:id', async (req, res) => {
     // console.log(req.params.id)
     // console.log(bodyy._id)
     let house = await Houses.findById(req.params.id)
+    console.log(house)
+    console.log('here')
+    console.log(house.populate('host'))
     // console.log(house)
     // Populate its host field - ???
     // Render the houses/one template, passing the house object
@@ -103,18 +106,18 @@ router.post('/', async (req, res) => {
     if (req.isAuthenticated()) {
       console.log('authed')
       console.log('and now we are here')
-      console.log(req.user._id)
-      console.log(req.body)
+      // console.log(req.user._id)
+      // console.log(req.body)
       req.body.host = req.user._id
       // console.log((req.body.host = req.user._id))
-      console.log(req.body)
+      // console.log(req.body)
       try {
         await Houses.create(req.body)
         console.log('house created')
         // now make it go to the newly created houses page - linked through the created house's id to the get /:id route
         let house = await Houses.findOne(req.body)
-        console.log(house)
-        console.log(house._id)
+        // console.log(house)
+        // console.log(house._id)
         res.redirect(`houses/${house._id}`)
       } catch (err) {
         console.log('nah the form fucked it mate')
