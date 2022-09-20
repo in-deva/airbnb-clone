@@ -43,9 +43,23 @@ router.post('/login', async (req, res) => {
     // console.log('login okkkkkk')
     // console.log(req.body)
     // find user with email and password match
-    let match = await Users.findOne(req.body)
-    if (match) {
+    let user = await Users.findOne(req.body)
+    if (user) {
       console.log('its a match - now log the fuck in')
+      // login match
+      // req.login({ match })
+      req.login(user, err => {
+        if (err) {
+          throw 'shit'
+        }
+        console.log('woo. what`s it mean now then')
+        if (req.isAuthenticated()) {
+          console.log('authed')
+        } else {
+          console.log('nat authed')
+        }
+      })
+      console.log('logged in')
     } else {
       console.log('uh oh - throw email/pw error here')
     }
