@@ -100,6 +100,11 @@ router.post('/', async (req, res) => {
       try {
         await Houses.create(req.body)
         console.log('house created')
+        // now make it go to the newly created houses page - linked through the created house's id to the get /:id route
+        let house = await Houses.findOne(req.body)
+        console.log(house)
+        console.log(house._id)
+        res.redirect(`houses/${house._id}`)
       } catch (err) {
         console.log('nah the form fucked it mate')
       }
