@@ -78,7 +78,6 @@ router.post('/signup', async (req, res) => {
     let user = await Users.create(req.body)
     console.log(user)
     console.log('user created')
-    // !!! could i redirect this to login auth with details filled to automatically go through it to houses? like a post request login with details?
     //run login process like in the login post Router (exact copy, make better)
     user = await Users.findOne(req.body)
     if (user) {

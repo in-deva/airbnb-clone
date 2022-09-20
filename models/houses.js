@@ -8,33 +8,33 @@ const ObjectId = mongoose.Schema.Types.ObjectId
 // Model
 module.exports = mongoose.model('houses', {
   title: {
-    type: String,
-    required: true
+    type: String
+    // required: true
   },
   description: {
-    type: String,
-    required: true
+    type: String
+    // required: true
   },
   rooms: {
-    type: number,
-    required: true
+    type: Number
+    // required: true
   },
   location: {
-    type: String,
-    required: true
+    type: String
+    // required: true
   },
   price: {
-    type: number,
-    required: true
+    type: Number
+    // required: true
   },
   photos: {
     type: []
     // array 'of text'? !!!
   },
   host: {
-    type: id,
+    type: ObjectId,
     required: true,
-    reference: users
+    ref: 'users'
     // formatting correct on reference? !!!
   }
 })
