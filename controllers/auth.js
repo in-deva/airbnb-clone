@@ -2,6 +2,8 @@
 const express = require('express')
 const router = express.Router()
 
+const users = require('../models/users')
+
 // Root
 router.get('/', async (req, res) => {
   try {
@@ -38,7 +40,7 @@ router.get('/signup', async (req, res) => {
 // Post login
 router.post('/login', async (req, res) => {
   try {
-    console.log('ok')
+    console.log('login ok')
   } catch (err) {
     res.redirect('/error')
   }
@@ -47,8 +49,12 @@ router.post('/login', async (req, res) => {
 // Post signup
 router.post('/signup', async (req, res) => {
   try {
-    console.log('ok')
+    console.log('signup post ok')
+    console.log(req.body)
+    await users.create(req.body)
+    console.log('user created')
   } catch (err) {
+    console.log('well at least it failed here')
     res.redirect('/error')
   }
 })
