@@ -9,6 +9,10 @@ router.get('/', async (req, res) => {
     if (req.isAuthenticated()) {
       console.log('authed')
       // res.render('../views/reviews')
+      // , {
+      //   user: req.user.name,
+      //   auth: req.isAuthenticated()
+      // }
     } else {
       console.log('not logged in')
       res.redirect('/auth/login')

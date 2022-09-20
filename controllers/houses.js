@@ -35,7 +35,10 @@ router.get('/create', async (req, res) => {
   try {
     console.log('create ok')
     if (req.isAuthenticated()) {
-      res.render('../views/houses/create')
+      res.render('../views/houses/create', {
+        user: req.user.name,
+        auth: req.isAuthenticated()
+      })
       console.log('authed')
     } else {
       console.log('not logged in')
@@ -50,7 +53,10 @@ router.get('/create', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     console.log('ok')
-    res.render('../views/houses/one')
+    res.render('../views/houses/one', {
+      user: req.user.name,
+      auth: req.isAuthenticated()
+    })
   } catch (err) {
     res.redirect('/error')
   }
@@ -62,7 +68,10 @@ router.get('/:id/edit', async (req, res) => {
     console.log('edit ok')
     if (req.isAuthenticated()) {
       console.log('authed')
-      res.render('../views/houses/edit')
+      res.render('../views/houses/edit', {
+        user: req.user.name,
+        auth: req.isAuthenticated()
+      })
     } else {
       console.log('not logged in')
       res.redirect('/auth/login')

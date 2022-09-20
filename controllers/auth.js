@@ -10,6 +10,8 @@ router.get('/', async (req, res) => {
     console.log('auth ok')
     // render
     // res.render('../views/houses/list')
+    // !!! test this works
+    res.redirect('/houses')
   } catch (err) {
     res.redirect('/error')
   }
