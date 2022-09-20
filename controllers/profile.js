@@ -6,7 +6,13 @@ const router = express.Router()
 router.get('/', async (req, res) => {
   try {
     console.log('profile ok')
-    res.render('../views/profile')
+    if (req.isAuthenticated()) {
+      console.log('authed')
+      res.render('../views/profile')
+    } else {
+      console.log('not logged in')
+      res.redirect('/auth/login')
+    }
   } catch (err) {
     res.redirect('/error')
   }
@@ -15,7 +21,14 @@ router.get('/', async (req, res) => {
 // Patch root
 router.patch('/', async (req, res) => {
   try {
-    console.log('ok')
+    console.log('patch ok')
+    if (req.isAuthenticated()) {
+      console.log('authed')
+      res.render('../views/profile')
+    } else {
+      console.log('not logged in')
+      res.redirect('/auth/login')
+    }
   } catch (err) {
     res.redirect('/error')
   }

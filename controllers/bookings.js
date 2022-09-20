@@ -6,7 +6,13 @@ const router = express.Router()
 router.post('/', async (req, res) => {
   try {
     console.log('bookings ok')
-    // res.render('../views/booking')
+    if (req.isAuthenticated()) {
+      console.log('authed')
+      // res.render('../views/bookings')
+    } else {
+      console.log('not logged in')
+      res.redirect('/auth/login')
+    }
   } catch (err) {
     res.redirect('/error')
   }

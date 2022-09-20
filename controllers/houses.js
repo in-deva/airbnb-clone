@@ -22,7 +22,7 @@ router.get('/create', async (req, res) => {
       console.log('authed')
     } else {
       console.log('not logged in')
-      res.redirect('/error')
+      res.redirect('/auth/login')
     }
   } catch (err) {
     res.redirect('/error')
@@ -42,8 +42,14 @@ router.get('/:id', async (req, res) => {
 // Get :id/edit
 router.get('/:id/edit', async (req, res) => {
   try {
-    console.log('ok')
-    res.render('../views/houses/edit')
+    console.log('edit ok')
+    if (req.isAuthenticated()) {
+      console.log('authed')
+      res.render('../views/houses/edit')
+    } else {
+      console.log('not logged in')
+      res.redirect('/auth/login')
+    }
   } catch (err) {
     res.redirect('/error')
   }
@@ -52,7 +58,14 @@ router.get('/:id/edit', async (req, res) => {
 // Post root
 router.post('/', async (req, res) => {
   try {
-    console.log('ok')
+    console.log('post ok')
+    if (req.isAuthenticated()) {
+      console.log('authed')
+      // res.render('../views/houses/??')
+    } else {
+      console.log('not logged in')
+      res.redirect('/auth/login')
+    }
   } catch (err) {
     res.redirect('/error')
   }
@@ -61,7 +74,14 @@ router.post('/', async (req, res) => {
 // Patch :id
 router.patch('/', async (req, res) => {
   try {
-    console.log('ok')
+    console.log('patch ok')
+    if (req.isAuthenticated()) {
+      console.log('authed')
+      // res.render('../views/houses/edit')
+    } else {
+      console.log('not logged in')
+      res.redirect('/auth/login')
+    }
   } catch (err) {
     res.redirect('/error')
   }
@@ -70,7 +90,14 @@ router.patch('/', async (req, res) => {
 // Delete :id
 router.delete('/:id', async (req, res) => {
   try {
-    console.log('ok')
+    console.log('delete ok')
+    if (req.isAuthenticated()) {
+      console.log('authed')
+      res.render('../views/houses/edit')
+    } else {
+      console.log('not logged in')
+      res.redirect('/auth/login')
+    }
   } catch (err) {
     res.redirect('/error')
   }
