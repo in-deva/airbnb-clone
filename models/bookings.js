@@ -17,11 +17,11 @@ module.exports = mongoose.model('bookings', {
     default: now
   },
   description: {
-    type: text,
+    type: String,
     required: true
   },
   house: {
-    type: text,
+    type: String,
     required: true,
     reference: houses
   }

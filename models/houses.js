@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 // Model
 module.exports = mongoose.model('houses', {
   description: {
-    type: text,
+    type: String,
     required: true
   },
   host: {
@@ -17,7 +17,7 @@ module.exports = mongoose.model('houses', {
     // formatting correct on reference? !!!
   },
   location: {
-    type: text,
+    type: String,
     required: true
   },
   photos: {
@@ -33,7 +33,7 @@ module.exports = mongoose.model('houses', {
     required: true
   },
   title: {
-    type: text,
+    type: String,
     required: true
   }
 })

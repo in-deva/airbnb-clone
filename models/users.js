@@ -7,18 +7,18 @@ const mongoose = require('mongoose')
 // Model
 module.exports = mongoose.model('users', {
   avatar: {
-    type: text
+    type: String
   },
   email: {
-    type: text,
+    type: String,
     required: true
   },
   name: {
-    type: text,
+    type: String,
     required: true
   },
   password: {
-    type: text,
+    type: String,
     required: true
   }
 })

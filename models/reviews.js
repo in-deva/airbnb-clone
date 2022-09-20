@@ -16,7 +16,7 @@ module.exports = mongoose.model('reviews', {
     required: true
   },
   description: {
-    type: text,
+    type: String,
     required: true
   },
   house: {
