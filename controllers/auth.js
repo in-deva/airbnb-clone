@@ -45,21 +45,21 @@ router.post('/login', async (req, res) => {
     // find user with email and password match
     let user = await Users.findOne(req.body)
     if (user) {
-      console.log('its a match - now log the fuck in')
+      // console.log('its a match - now log the fuck in')
       // login match
-      // req.login({ match })
       req.login(user, err => {
         if (err) {
           throw 'shit'
         }
-        console.log('woo. what`s it mean now then')
-        if (req.isAuthenticated()) {
-          console.log('authed')
-        } else {
-          console.log('nat authed')
-        }
+        res.redirect('/houses')
+        // console.log('woo. what`s it mean now then')
+        // if (req.isAuthenticated()) {
+        //   console.log('authed')
+        // } else {
+        //   console.log('nat authed')
+        // }
+        console.log('logged in')
       })
-      console.log('logged in')
     } else {
       console.log('uh oh - throw email/pw error here')
     }
@@ -73,9 +73,25 @@ router.post('/login', async (req, res) => {
 router.post('/signup', async (req, res) => {
   try {
     console.log('signup post ok')
-    console.log(req.body)
-    await users.create(req.body)
+    // console.log(req.body)
+    let user = await Users.create(req.body)
+    console.log(user)
     console.log('user created')
+    // !!! could i redirect this to login auth with details filled to automatically go through it to houses? like a post request login with details?
+    //run login process like in the login post Router (exact copy, make better)
+    user = await Users.findOne(req.body)
+    if (user) {
+      req.login(user, err => {
+        if (err) {
+          throw 'shit'
+        }
+        console.log('logged in - do that bit here')
+        res.redirect('/houses')
+      })
+    } else {
+      console.log('uh oh - throw email/pw error here')
+    }
+    // redirect to houses route
   } catch (err) {
     console.log('well at least it failed here')
     res.redirect('/error')
