@@ -6,7 +6,13 @@ const router = express.Router()
 router.get('/', async (req, res) => {
   try {
     console.log('houses ok')
-    res.render('../views/houses/list')
+    let user = await req.user
+    // console.log(user.name)
+    // console.log(req.isAuthenticated())
+    res.render('../views/houses/list', {
+      user: req.user.name,
+      auth: req.isAuthenticated
+    })
   } catch (err) {
     console.log('failed on houses route')
     res.redirect('/error')
