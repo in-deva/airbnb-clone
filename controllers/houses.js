@@ -56,10 +56,21 @@ router.get('/create', async (req, res) => {
 // Get :id
 router.get('/:id', async (req, res) => {
   try {
-    console.log('ok')
+    // 		Modify the GET /houses/:id controller to:
+    // Find the document in the houses collection by id
+    console.log('now in house/:id get route')
+    // let bodyy = await req.body
+    // console.log(bodyy)
+    // console.log(req.params.id)
+    // console.log(bodyy._id)
+    let house = await Houses.findById(req.params.id)
+    // console.log(house)
+    // Populate its host field - ???
+    // Render the houses/one template, passing the house object
     res.render('../views/houses/one', {
       user: req.user.name,
-      auth: req.isAuthenticated()
+      auth: req.isAuthenticated(),
+      house // !!! - can I do await in-line here?
     })
   } catch (err) {
     res.redirect('/error')
@@ -104,6 +115,7 @@ router.post('/', async (req, res) => {
         let house = await Houses.findOne(req.body)
         console.log(house)
         console.log(house._id)
+        // !!! replace this with a redirect to the get /:id route straight (idk how this is different yet but ill leave this here)
         res.redirect(`houses/${house._id}`)
       } catch (err) {
         console.log('nah the form fucked it mate')
