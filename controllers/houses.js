@@ -12,6 +12,8 @@ router.get('/', async (req, res) => {
     // and passes them as the `houses` array to the view.
     // edit the view to display these (next section)
     console.log('houses ok')
+    // await Houses.deleteMany({})
+    // console.log('just deleted all the fucking houses bro')
     // !!! can I move the 'if' logic and all that to inside the render object of data?
     let houses = await Houses.find({})
     if (req.isAuthenticated()) {
