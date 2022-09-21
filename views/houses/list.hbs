@@ -99,6 +99,7 @@
 			{{#each houses as |house|}}
 	      <div class="col my-2">
 	        <div class="card">
+						<a href="/houses/{{house._id}}" class="stretched-link"></a>
 	          <img
 	            src="{{house.photos.[0]}}"
 	            class="card-img-top"
@@ -126,6 +127,7 @@
 	              ${{house.price}}/night
 	            </span>
 	          </div>
+					</a>
 	        </div>
 	        <!-- end House -->
 	      </div>
