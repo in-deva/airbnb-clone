@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
       // Use the GET /profile to also find in the database all houses that are listed by the user (using the host field),
       console.log(req.user._id)
       let listings = await Houses.find({ host: req.user._id })
-      console.log(listings)
+      // console.log(listings)
       //.sort(
       //   req.query.sort ? req.query.sort : 'price'
       // )

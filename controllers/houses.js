@@ -97,10 +97,11 @@ router.get('/:id', async (req, res) => {
 
 // Get :id/edit
 router.get('/:id/edit', async (req, res) => {
-  // console.log('houses/id/edit get route')
+  console.log('houses/id/edit get route')
   try {
     if (req.isAuthenticated()) {
       console.log('authed')
+      console.log(req.query.listingID)
       res.render('../views/houses/edit', {
         user: req.user.name,
         auth: req.isAuthenticated()
