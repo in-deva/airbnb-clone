@@ -22,7 +22,7 @@
 	                aria-label="Example select with button addon"
 	              >
 	                <!-- !!! replace with locations from the houses? -->
-	                <option selected>Any Location</option>
+	                <option selected value="any">Any Location</option>
 	                <option>Koh Samui</option>
 	                <option>Koh Phangan</option>
 	                <option>Koh Tao</option>
@@ -41,7 +41,7 @@
 	                id="inputGroupSelect03"
 	                aria-label="Example select with button addon"
 	              >
-	                <option selected>Any Rooms</option>
+	                <option selected value="any">Any Rooms</option>
 	                <option value="1">One</option>
 	                <option value="2">Two</option>
 	                <option value="3">Three</option>
@@ -94,6 +94,11 @@
 	            </div>
 	          </div>
 	          <div class="col">
+							<input
+								type="hidden"
+								name="filtering"
+								value="true"
+							/>
 	            <!-- !!! replace - button to submit form -->
 	            <button class="btn btn-primary">Search</button>
 	          </div>

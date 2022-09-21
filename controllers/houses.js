@@ -15,23 +15,55 @@ router.get('/', async (req, res) => {
     // await Houses.deleteMany({})
     // console.log('just deleted all the fucking houses bro')
     // !!! can I move the 'if' logic and all that to inside the render object of data?
+    let query = await req.query
+    // console.log(query.length())
 
-    // filters start
-    let filters = req.query
-    // console.log(req.query)
-    let q = {
-      location: req.query.location, //if not any
-      rooms: req.query.rooms // if not any
-      // price: req.query.maxPrice, //less than filter needed
-      // title: req.query.title //if not blank, regex match
+    if (req.query.location) {
+      console.log('yessss')
+      // filters start
+      let filters = await req.query // you don't need async for a request dummy
+      console.log(filters)
+      console.log('now here bro')
+      let location = filters.location
+      let rooms = filters.rooms
+      if (filters.location == 'any') {
+        console.log('location is any')
+        location = { $regex: '' }
+      } else {
+        console.log('location isnt any')
+      }
+      if (filters.rooms == 'any') {
+        console.log('rooms any')
+        rooms = { $regex: '' }
+      } else {
+        console.log('rooms not any')
+      }
+      console.log('ifs done')
+      console.log(location)
+      console.log(rooms)
+      let q = {
+        // filtering,
+        // location: req.query.location, //if not any
+        // rooms: req.query.rooms, // if not any
+        location,
+        rooms,
+        // price: { $lt: req.query.maxPrice },
+        title: { $regex: req.query.title, $options: 'i' }
+      }
+      console.log(q)
+      // find
+      let houses = await Houses.find(q)
+      // then sort depending on sort filter
+      // end filters
+    } else {
+      console.log('noooo')
     }
-    console.log(q)
-    // find
-    let houses = await Houses.find(q)
-    // then sort depending on sort filter
+    // if (req.query.location) {
 
-    // end filters
-    // let houses = await Houses.find({})
+    // } else {
+    //   let houses = await Houses.find({})
+    // }
+    let houses = await Houses.find({})
     if (req.isAuthenticated()) {
       // console.log('the houses in the db are...')
       // console.log(houses)
