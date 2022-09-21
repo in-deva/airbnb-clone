@@ -61,7 +61,8 @@ router.get('/:id', async (req, res) => {
     console.log('now in house/:id get route')
     let house = await Houses.findById(req.params.id)
     let housePop = await Houses.findById(req.params.id).populate('host')
-    console.log(housePop)
+    // console.log(housePop)
+    // console.log(housePop.host.name)
     // let bodyy = await req.query
     // console.log(bodyy)
     //console.log(req.params)
@@ -76,7 +77,9 @@ router.get('/:id', async (req, res) => {
     res.render('../views/houses/one', {
       user: req.user.name,
       auth: req.isAuthenticated(),
-      house // !!! - can I do await in-line here?
+      house, // !!! - can I do await in-line here?
+      hostName: housePop.host.name,
+      hostAvatar: housePop.host.avatar
     })
   } catch (err) {
     res.redirect('/error')
