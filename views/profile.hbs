@@ -9,47 +9,45 @@
         <!-- profile section -->
         <h2 class="border-bottom pb-3">Profile</h2>
         <form action="/profile?_method=PATCH" method="post">
-					<!-- !!! why the fuck have I made this a form?? -->
           <!-- replace name with proper input -->
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label"
+            <label class="form-label"
               >Full Name</label
             >
             <input
               type="text"
+							name="name"
               class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
 							value="{{userFull.name}}"
             />
           </div>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label"
+            <label class="form-label"
               >Email</label
             >
             <input
               type="email"
+							name="email"
               class="form-control"
 							value="{{userFull.email}}"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
             />
             <div id="emailHelp" class="form-text">
               We'll never share your email with anyone else.
             </div>
           </div>
 					<div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label"
+            <label class="form-label"
               >Profile Picture</label
             >
 						<p>!!! avatar image from nav bar here</p>
             <input
               type="text"
+							name="avatar"
               class="form-control"
 							value="{{userFull.avatar}}"
             />
           </div>
-          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <button class="btn btn-primary">Save Changes</button>
         </form>
       </div>
       <!-- end profile section -->
