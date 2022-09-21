@@ -12,70 +12,42 @@ router.get('/', async (req, res) => {
     // and passes them as the `houses` array to the view.
     // edit the view to display these (next section)
     console.log('houses ok')
-    // await Houses.deleteMany({})
-    // console.log('just deleted all the fucking houses bro')
-    // !!! can I move the 'if' logic and all that to inside the render object of data?
-    let query = await req.query
-    // console.log(query.length())
-
-    if (req.query.location) {
-      console.log('yessss')
-      // filters start
-      let filters = await req.query // you don't need async for a request dummy
-      console.log(filters)
-      console.log('now here bro')
-      let location = filters.location
-      let rooms = filters.rooms
-      if (filters.location == 'any') {
-        console.log('location is any')
-        location = { $regex: '' }
-      } else {
-        console.log('location isnt any')
-      }
-      if (filters.rooms == 'any') {
-        console.log('rooms any')
-        rooms = { $regex: '' }
-      } else {
-        console.log('rooms not any')
-      }
-      console.log('ifs done')
-      console.log(location)
-      console.log(rooms)
-      let q = {
-        // filtering,
-        // location: req.query.location, //if not any
-        // rooms: req.query.rooms, // if not any
-        location,
-        rooms,
-        // price: { $lt: req.query.maxPrice },
-        title: { $regex: req.query.title, $options: 'i' }
-      }
-      console.log(q)
-      // find
-      let houses = await Houses.find(q)
-      // then sort depending on sort filter
-      // end filters
-    } else {
-      console.log('noooo')
-    }
-    // if (req.query.location) {
-
-    // } else {
-    //   let houses = await Houses.find({})
+    // function ifBlank(str) {
+    // 	if (str == '') {return ('{ $gt: 0 }'}
+    // 	else {return ('{ $lt: 0 }')}
     // }
-    let houses = await Houses.find({})
+    // console.log(req.query.price)
+    let query = req.query.filtering
+      ? {
+          location: req.query.location,
+          rooms: req.query.rooms,
+          price:
+            req.query.maxPrice == '' ? { $gte: 0 } : { $lt: req.query.maxPrice }
+          // { $lt: req.query.maxPrice },
+          // title: { $regex: req.query.title, $options: 'i' }
+        }
+      : {}
+
+    // Allow Any
+    if (query.location == 'any') delete query.location
+    if (query.rooms == 'any') delete query.rooms
+    // if (query.price == 'any') delete query.maxPrice
+
+    let houses = await Houses.find(query)
+
+    console.log('here')
     if (req.isAuthenticated()) {
-      // console.log('the houses in the db are...')
-      // console.log(houses)
-      res.render('../views/houses/list', {
+      res.render('houses/list', {
+        // change to just user & update templates
         user: req.user.name,
         auth: req.isAuthenticated(),
         houses
       })
     } else {
-      res.render('../views/houses/list', { houses })
+      res.render('houses/list', { houses })
     }
   } catch (err) {
+    // change for next function and throw errors
     console.log('failed on houses route')
     res.redirect('/error')
   }
