@@ -61,13 +61,16 @@ contents
       <!-- Add photos - 1 label then multiple inputs text with placeholder -->
       <div class="mb-3">
         <label class="form-label">Add Photos (up to 9)</label>
-        <input
-					name="photos"
-          type="text"
-          class="mb-2 form-control"
-          placeholder="http://..."
-          aria-describedby="."
-        />
+				<!-- make handlebars repeat the block 9 times -->
+				<!-- {{#each photos as |photo|}} -->
+	        <input
+						name="photos"
+	          type="text"
+	          class="mb-2 form-control"
+	          placeholder="http://..."
+	          aria-describedby="."
+	        />
+				<!-- {{/each}} -->
         <input
 					name="photos"
           type="text"
