@@ -7,24 +7,23 @@ const Houses = require('../models/houses')
 // Root
 router.get('/', async (req, res) => {
   try {
+    // Modify the GET `/houses` controller so that it
+    // loads all documents from the `houses` collection
+    // and passes them as the `houses` array to the view.
+    // edit the view to display these (next section)
     console.log('houses ok')
-    // console.log(req.user)
-    // if (req.user) {
-    //   let userName = req.user
-    // } else {
-    //   let userName = undefined
-    // }
-    // console.log(req.user.name)
-    // let user = await req.user
-    // console.log(user.name)
-    // console.log(req.isAuthenticated())
+    // !!! can I move the 'if' logic and all that to inside the render object of data?
+    let houses = await Houses.find({})
     if (req.isAuthenticated()) {
+      // console.log('the houses in the db are...')
+      // console.log(houses)
       res.render('../views/houses/list', {
         user: req.user.name,
-        auth: req.isAuthenticated()
+        auth: req.isAuthenticated(),
+        houses
       })
     } else {
-      res.render('../views/houses/list')
+      res.render('../views/houses/list', { houses })
     }
   } catch (err) {
     console.log('failed on houses route')
@@ -37,7 +36,7 @@ router.get('/create', async (req, res) => {
   try {
     console.log('create ok')
     if (req.isAuthenticated()) {
-      console.log(req.user._id)
+      // console.log(req.user._id)
       res.render('../views/houses/create', {
         user: req.user.name,
         auth: req.isAuthenticated(),
