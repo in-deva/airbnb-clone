@@ -4,10 +4,11 @@ const router = express.Router()
 
 // Get ...
 router.get('/', async (req, res) => {
+  // console.log('index get route')
   try {
-    console.log('index ok')
     res.redirect('/houses')
   } catch (err) {
+    // !!! throw error properly
     res.redirect('/error')
   }
 })

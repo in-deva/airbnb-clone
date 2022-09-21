@@ -1,7 +1,6 @@
 // Packages
 const express = require('express')
 const router = express.Router()
-
 const mongoose = require('mongoose')
 const ObjectId = mongoose.Schema.Types.ObjectId
 
@@ -40,6 +39,3 @@ module.exports = mongoose.model('houses', {
     ref: 'users'
   }
 })
-
-// default:,
-// reference:,

@@ -4,10 +4,10 @@ const router = express.Router()
 
 // Get root
 router.get('/', async (req, res) => {
+  // console.log('profile get route')
   try {
-    console.log('profile ok')
     if (req.isAuthenticated()) {
-      console.log('authed')
+      // console.log('authed')
       res.render('../views/profile', {
         user: req.user.name,
         auth: req.isAuthenticated()
@@ -23,10 +23,10 @@ router.get('/', async (req, res) => {
 
 // Patch root
 router.patch('/', async (req, res) => {
+  // console.log('profile patch route')
   try {
-    console.log('patch ok')
     if (req.isAuthenticated()) {
-      console.log('authed')
+      // console.log('authed')
       res.render('../views/profile')
     } else {
       console.log('not logged in')
