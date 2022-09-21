@@ -15,9 +15,23 @@ router.get('/', async (req, res) => {
     // await Houses.deleteMany({})
     // console.log('just deleted all the fucking houses bro')
     // !!! can I move the 'if' logic and all that to inside the render object of data?
-    console.log(req.body)
-    console.log(req.query)
-    let houses = await Houses.find({})
+
+    // filters start
+    let filters = req.query
+    // console.log(req.query)
+    let q = {
+      location: req.query.location, //if not any
+      rooms: req.query.rooms // if not any
+      // price: req.query.maxPrice, //less than filter needed
+      // title: req.query.title //if not blank, regex match
+    }
+    console.log(q)
+    // find
+    let houses = await Houses.find(q)
+    // then sort depending on sort filter
+
+    // end filters
+    // let houses = await Houses.find({})
     if (req.isAuthenticated()) {
       // console.log('the houses in the db are...')
       // console.log(houses)
