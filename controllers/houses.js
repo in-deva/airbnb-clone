@@ -6,17 +6,9 @@ const Houses = require('../models/houses')
 
 // Root
 router.get('/', async (req, res) => {
+  // console.log('houses get route')
   try {
-    // Modify the GET `/houses` controller so that it
-    // loads all documents from the `houses` collection
-    // and passes them as the `houses` array to the view.
-    // edit the view to display these (next section)
-    console.log('houses ok')
-    // function ifBlank(str) {
-    // 	if (str == '') {return ('{ $gt: 0 }'}
-    // 	else {return ('{ $lt: 0 }')}
-    // }
-    // console.log(req.query.price)
+    // if query set filter object else blank object
     let query = req.query.filtering
       ? {
           location: req.query.location,
@@ -28,19 +20,17 @@ router.get('/', async (req, res) => {
           title: { $regex: req.query.title, $options: 'i' }
         }
       : {}
-
-    // Allow Any
+    // delete 'any' from folder filter
     if (query.location == 'any') delete query.location
     if (query.rooms == 'any') delete query.rooms
-    // if (query.price == 'any') delete query.maxPrice
-
+    // sort results
     let houses = await Houses.find(query).sort(
       req.query.sort ? req.query.sort : 'price'
     )
-
+    // render with different navbars
     if (req.isAuthenticated()) {
       res.render('houses/list', {
-        // change to just user & update templates
+        // !!! change to just user & update templates
         user: req.user.name,
         auth: req.isAuthenticated(),
         houses
@@ -49,26 +39,22 @@ router.get('/', async (req, res) => {
       res.render('houses/list', { houses })
     }
   } catch (err) {
-    // change for next function and throw errors
-    console.log('failed on houses route')
+    // !!! change for next function and throw errors
     res.redirect('/error')
   }
 })
 
 // Get create
 router.get('/create', async (req, res) => {
+  // console.log(houses/create get route)
   try {
-    console.log('create ok')
     if (req.isAuthenticated()) {
-      // console.log(req.user._id)
       res.render('../views/houses/create', {
         user: req.user.name,
         auth: req.isAuthenticated(),
         hostID: req.user._id
       })
-      console.log('authed')
     } else {
-      console.log('not logged in')
       res.redirect('/auth/login')
     }
   } catch (err) {
@@ -78,26 +64,14 @@ router.get('/create', async (req, res) => {
 
 // Get :id
 router.get('/:id', async (req, res) => {
+  // console.log('houses/:id get route')
   try {
-    // 		Modify the GET /houses/:id controller to:
-    // Find the document in the houses collection by id
-    console.log('now in house/:id get route')
+    // !!! fix these - house vs housePop
     let house = await Houses.findById(req.params.id)
     let housePop = await Houses.findById(req.params.id).populate('host')
-    // console.log(housePop)
-    // console.log(housePop.host.name)
-    // let bodyy = await req.query
-    // console.log(bodyy)
-    //console.log(req.params)
-    // console.log(bodyy._id)
-    // console.log(house)
-    // console.log('here')
-    // console.log(housePop)
-    // console.log(house.populate('host'))
-    // console.log(house)
-    // Populate its host field - ???
     // Render the houses/one template, passing the house object
     res.render('../views/houses/one', {
+      // !!! Populate its host field with host object - then pull user.name - ???
       user: req.user.name,
       auth: req.isAuthenticated(),
       house, // !!! - can I do await in-line here?
@@ -111,8 +85,8 @@ router.get('/:id', async (req, res) => {
 
 // Get :id/edit
 router.get('/:id/edit', async (req, res) => {
+  // console.log('houses/id/edit get route')
   try {
-    console.log('edit ok')
     if (req.isAuthenticated()) {
       console.log('authed')
       res.render('../views/houses/edit', {
@@ -130,34 +104,22 @@ router.get('/:id/edit', async (req, res) => {
 
 // Post root
 router.post('/', async (req, res) => {
+  // console.log('houses post route')
   try {
-    console.log('post ok')
     if (req.isAuthenticated()) {
-      console.log('authed')
-      console.log('and now we are here')
-      // console.log(req.user._id)
-      // console.log(req.body)
+      // console.log('authed')
       req.body.host = req.user._id
-      // console.log((req.body.host = req.user._id))
-      // console.log(req.body)
       try {
+        // console.log('created house')
         await Houses.create(req.body)
-        console.log('house created')
-        // now make it go to the newly created houses page - linked through the created house's id to the get /:id route
+        // go to the house page of the newly created house
         let house = await Houses.findOne(req.body)
-        console.log(house)
-        // console.log(house._id)
         res.redirect(`houses/${house._id}`)
       } catch (err) {
-        console.log('nah the form fucked it mate')
+        console.log('error - !!! do these properly')
       }
-      // console.log(user)
-
-      // res.render('../views/houses/??')
-      // code here from the crate a house form to input it into db
-      // houses folder using houses model
     } else {
-      console.log('not logged in')
+      // console.log('not logged in')
       res.redirect('/auth/login')
     }
   } catch (err) {
@@ -167,10 +129,11 @@ router.post('/', async (req, res) => {
 
 // Patch :id
 router.patch('/', async (req, res) => {
+  // console.log('houses patch route')
   try {
-    console.log('patch ok')
     if (req.isAuthenticated()) {
-      console.log('authed')
+      // console.log('authed')
+      // !!! house edit code here ...
       // res.render('../views/houses/edit')
     } else {
       console.log('not logged in')
@@ -183,11 +146,12 @@ router.patch('/', async (req, res) => {
 
 // Delete :id
 router.delete('/:id', async (req, res) => {
+  // console.log('houses delete route')
   try {
-    console.log('delete ok')
     if (req.isAuthenticated()) {
-      console.log('authed')
-      res.render('../views/houses/edit')
+      // console.log('authed')
+      // !!! house delete code here ...
+      // res.render('../views/houses/edit')
     } else {
       console.log('not logged in')
       res.redirect('/auth/login')
