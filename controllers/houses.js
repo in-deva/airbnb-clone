@@ -22,9 +22,10 @@ router.get('/', async (req, res) => {
           location: req.query.location,
           rooms: req.query.rooms,
           price:
-            req.query.maxPrice == '' ? { $gte: 0 } : { $lt: req.query.maxPrice }
-          // { $lt: req.query.maxPrice },
-          // title: { $regex: req.query.title, $options: 'i' }
+            req.query.maxPrice == ''
+              ? { $gte: 0 }
+              : { $lt: req.query.maxPrice },
+          title: { $regex: req.query.title, $options: 'i' }
         }
       : {}
 
