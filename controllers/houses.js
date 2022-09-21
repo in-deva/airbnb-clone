@@ -70,14 +70,26 @@ router.get('/:id', async (req, res) => {
     let house = await Houses.findById(req.params.id)
     let housePop = await Houses.findById(req.params.id).populate('host')
     // Render the houses/one template, passing the house object
-    res.render('../views/houses/one', {
-      // !!! Populate its host field with host object - then pull user.name - ???
-      user: req.user.name,
-      auth: req.isAuthenticated(),
-      house, // !!! - can I do await in-line here?
-      hostName: housePop.host.name,
-      hostAvatar: housePop.host.avatar
-    })
+    if (req.isAuthenticated()) {
+      // console.log('authed')
+      res.render('../views/houses/one', {
+        // !!! Populate its host field with host object - then pull user.name - ???
+        user: req.user.name,
+        auth: req.isAuthenticated(),
+        house, // !!! - can I do await in-line here?
+        hostName: housePop.host.name,
+        hostAvatar: housePop.host.avatar
+      })
+    } else {
+      res.render('../views/houses/one', {
+        // !!! Populate its host field with host object - then pull user.name - ???
+        // user: req.user.name,
+        // auth: req.isAuthenticated(),
+        house, // !!! - can I do await in-line here?
+        hostName: housePop.host.name,
+        hostAvatar: housePop.host.avatar
+      })
+    }
   } catch (err) {
     res.redirect('/error')
   }
