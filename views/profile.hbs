@@ -6,7 +6,7 @@
   <div class="container text-center">
     <div class="row text-start">
       <div class="col-4">
-        <!-- profile section -->
+		   <!-- profile section -->
         <h2 class="border-bottom pb-3">Profile</h2>
         <form action="/profile?_method=PATCH" method="post">
           <!-- replace name with proper input -->
@@ -67,46 +67,28 @@
           </ul>
         </div>
         <!-- with listings -->
-        <div class="card mb-3" style="max-width: 540px;">
+				{{#each listings as |listing|}}
+        	<div class="card mb-3" style="max-width: 540px;">
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="..." class="img-fluid rounded-start" alt="..." />
+              <img src="{{listing.photos.[0]}}" class="img-fluid rounded-start" alt="..." />
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{{listing.title}}</h5>
+								<!-- listing rooms and rate inline - match block with houses card -->
+								<span>{{listing.location}} Rooms *bulletpoint* ${{listing.price}}/night</span>
                 <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  {{listing.description}}
                 </p>
-                <p class="card-text">
+                <!-- <p class="card-text">
                   <small class="text-muted">Last updated 3 mins ago</small>
-                </p>
+                </p> -->
               </div>
             </div>
           </div>
-        </div>
-        <div class="card mb-3" style="max-width: 540px;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="..." class="img-fluid rounded-start" alt="..." />
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <p class="card-text">
-                  <small class="text-muted">Last updated 3 mins ago</small>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        	</div>
+				{{/each}}
       </div>
       <!-- end listing section -->
     </div>
