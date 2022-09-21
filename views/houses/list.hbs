@@ -7,87 +7,98 @@
   <div class="p-1 bg-light text-dark border-top">
     <div class="container-md my-3">
       <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="input-group">
-              <span class="input-group-text">
-                <i class="fa-solid fa-location-dot"></i
-              ></span>
-              <select
-                class="form-select"
-                id="inputGroupSelect03"
-                aria-label="Example select with button addon"
-              >
-                <!-- !!! replace with locations from the houses? -->
-                <option selected>Any Location</option>
-                <option>Koh Samui</option>
-                <option>Koh Phangan</option>
-                <option>Koh Tao</option>
-              </select>
-            </div>
-          </div>
-          <div class="col">
-            <div class="input-group">
-              <span class="input-group-text"
-                ><i class="fa-solid fa-house"></i
-              ></span>
-              <select
-                class="form-select"
-                id="inputGroupSelect03"
-                aria-label="Example select with button addon"
-              >
-                <option selected>Any Rooms</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-          </div>
-          <div class="col">
-            <div class="input-group">
-              <span class="input-group-text fw-bold">$</span>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="max price"
-              />
-            </div>
-          </div>
-          <div class="col">
-            <div class="input-group">
-              <span class="input-group-text"
-                ><i class="fa-solid fa-sort"></i
-              ></span>
-              <select
-                class="form-select"
-                id="inputGroupSelect03"
-                aria-label="Example select with button addon"
-              >
-                <!-- replace these with options -->
-                <option selected>Choose...</option>
-                <option value="1">Price (low to high)</option>
-                <option value="2">Price (high to low)</option>
-                <option value="3">Price (another)</option>
-              </select>
-            </div>
-          </div>
-          <div class="col">
-            <div class="input-group">
-              <input
-                type="text"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                placeholder="House Name..."
-              />
-            </div>
-          </div>
-
-          <div class="col">
-            <!-- !!! replace - button to submit form -->
-            <a href="..." class="btn btn-primary">Search</a>
-          </div>
-        </div>
+				<form action="/houses" method="get">
+	        <div class="row">
+	          <div class="col">
+							<!-- location -->
+	            <div class="input-group">
+	              <span class="input-group-text">
+	                <i class="fa-solid fa-location-dot"></i
+	              ></span>
+	              <select
+	                class="form-select"
+									name="location"
+	                id="inputGroupSelect03"
+	                aria-label="Example select with button addon"
+	              >
+	                <!-- !!! replace with locations from the houses? -->
+	                <option selected>Any Location</option>
+	                <option>Koh Samui</option>
+	                <option>Koh Phangan</option>
+	                <option>Koh Tao</option>
+	              </select>
+	            </div>
+	          </div>
+	          <div class="col">
+							<!-- rooms -->
+	            <div class="input-group">
+	              <span class="input-group-text"
+	                ><i class="fa-solid fa-house"></i
+	              ></span>
+	              <select
+	                class="form-select"
+									name="rooms"
+	                id="inputGroupSelect03"
+	                aria-label="Example select with button addon"
+	              >
+	                <option selected>Any Rooms</option>
+	                <option value="1">One</option>
+	                <option value="2">Two</option>
+	                <option value="3">Three</option>
+	              </select>
+	            </div>
+	          </div>
+	          <div class="col">
+							<!-- price -->
+	            <div class="input-group">
+	              <span class="input-group-text fw-bold">$</span>
+	              <input
+	                type="number"
+									name="maxPrice"
+	                class="form-control"
+	                placeholder="max price"
+	              />
+	            </div>
+	          </div>
+	          <div class="col">
+							<!-- sort -->
+	            <div class="input-group">
+	              <span class="input-group-text"
+	                ><i class="fa-solid fa-sort"></i
+	              ></span>
+	              <select
+	                class="form-select"
+									name="sort"
+	                id="inputGroupSelect03"
+	                aria-label="Example select with button addon"
+	              >
+	                <!-- replace these with options -->
+	                <option selected>Choose...</option>
+	                <option value="price">Price (low to high)</option>
+	                <option value="-price">Price (high to low)</option>
+	                <!-- <option value="3">Price (another)</option> -->
+	              </select>
+	            </div>
+	          </div>
+	          <div class="col">
+							<!-- title -->
+	            <div class="input-group">
+	              <input
+	                type="text"
+	                class="form-control"
+									name="title"
+	                id="exampleInputEmail1"
+	                aria-describedby="emailHelp"
+	                placeholder="House Name..."
+	              />
+	            </div>
+	          </div>
+	          <div class="col">
+	            <!-- !!! replace - button to submit form -->
+	            <button class="btn btn-primary">Search</button>
+	          </div>
+	        </div>
+				</form>
       </div>
     </div>
   </div>
