@@ -59,14 +59,17 @@ router.get('/:id', async (req, res) => {
     // 		Modify the GET /houses/:id controller to:
     // Find the document in the houses collection by id
     console.log('now in house/:id get route')
-    // let bodyy = await req.body
-    // console.log(bodyy)
-    // console.log(req.params.id)
-    // console.log(bodyy._id)
     let house = await Houses.findById(req.params.id)
-    console.log(house)
-    console.log('here')
-    console.log(house.populate('host'))
+    let housePop = await Houses.findById(req.params.id).populate('host')
+    console.log(housePop)
+    // let bodyy = await req.query
+    // console.log(bodyy)
+    //console.log(req.params)
+    // console.log(bodyy._id)
+    // console.log(house)
+    // console.log('here')
+    // console.log(housePop)
+    // console.log(house.populate('host'))
     // console.log(house)
     // Populate its host field - ???
     // Render the houses/one template, passing the house object

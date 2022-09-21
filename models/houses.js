@@ -35,7 +35,6 @@ module.exports = mongoose.model('houses', {
     type: ObjectId,
     required: true,
     ref: 'users'
-    // formatting correct on reference? !!!
   }
 })
 
