@@ -100,11 +100,14 @@ router.get('/:id/edit', async (req, res) => {
   console.log('houses/id/edit get route')
   try {
     if (req.isAuthenticated()) {
-      console.log('authed')
-      console.log(req.query.listingID)
+      // console.log('authed')
+      // console.log(req.query.listingID)
+      let house = await Houses.findById(req.query.listingID)
+      console.log(house)
       res.render('../views/houses/edit', {
         user: req.user.name,
-        auth: req.isAuthenticated()
+        auth: req.isAuthenticated(),
+        house
       })
     } else {
       console.log('not logged in')

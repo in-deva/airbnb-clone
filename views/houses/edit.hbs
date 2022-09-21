@@ -17,7 +17,7 @@ contents
       <h1>Edit a House</h1>
       <div class="mb-3">
         <label class="form-label">Short Title</label>
-        <input type="text" class="form-control" name="title" required/>
+        <input type="text" class="form-control" name="title" value="{{house.title}}" required />
       </div>
       <div class="mb-3">
         <label class="form-label">Description</label>
@@ -26,11 +26,11 @@ contents
           name="description"
           rows="7"
 					required
-        ></textarea>
+        >{{house.description}}</textarea>
       </div>
       <div class="mb-3">
         <span>Number of Rooms</span>
-        <input name="rooms" type="number" class="form-control" required />
+        <input name="rooms" value="{{house.rooms}}" type="number" class="form-control" required />
       </div>
       <!-- Location - select -->
       <div class="input-group">
@@ -41,12 +41,14 @@ contents
 					<select
 						class="form-select"
 						name="location"
+						value="{{house.location}}"
 						id="inputGroupSelect03"
 						aria-label="Example select with button addon"
 						required
 					>
 						<!-- !!! replace with locations from the houses? -->
-						<option selected name="location">Any Location</option>
+						<!-- !!! what logic is required here to select the option from the data input? -->
+						<option>Any Location</option>
 						<option>Koh Samui</option>
 						<option>Koh Phangan</option>
 						<option>Koh Tao</option>
@@ -57,9 +59,10 @@ contents
       <div class="mb 3">
         <label class="form-label">Price (per night)</label>
         <span class="input-group-text fw-bold">$</span>
-        <input type="number" name="price" class="form-control" required />
+        <input type="number" name="price" value="{{house.price}}" class="form-control" required />
       </div>
       <!-- Add photos - 1 label then multiple inputs text with placeholder -->
+			<!-- !!! for each logic on house.photos -->
       <div class="mb-3">
         <label class="form-label">Add Photos (up to 9)</label>
 				<!-- make handlebars repeat the block 9 times -->
