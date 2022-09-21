@@ -34,7 +34,9 @@ router.get('/', async (req, res) => {
     if (query.rooms == 'any') delete query.rooms
     // if (query.price == 'any') delete query.maxPrice
 
-    let houses = await Houses.find(query).sort(req.query.sort)
+    let houses = await Houses.find(query).sort(
+      req.query.sort ? req.query.sort : 'price'
+    )
 
     if (req.isAuthenticated()) {
       res.render('houses/list', {
