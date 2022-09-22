@@ -9,7 +9,7 @@ module.exports = mongoose.model('reviews', {
   author: {
     type: ObjectId,
     required: true,
-    reference: 'users'
+    ref: 'users'
   },
   date: {
     type: Date,

@@ -10,7 +10,8 @@ router.post('/', async (req, res) => {
     if (req.isAuthenticated()) {
       // console.log('authed')
       // Use the POST `/reviews` controller to create a review, then redirect to the house page.
-
+      console.log('hereeeeee')
+      console.log(req.user._id)
       await Reviews.create({
         author: req.user._id,
         house: req.body.house,

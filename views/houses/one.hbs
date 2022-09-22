@@ -165,33 +165,32 @@
               </form>
               <!-- existing reviews -->
               <!-- !!! once 'hosted by' block is perfect, nick it, then place review text underneath -->
-              <div class="card mt-4">
-                <div class="row">
-                  <div class="col-1">img</div>
-                  <div class="col-11">
-                    <div class="card-body">
-                      <div class="container p-0">
-                        <div class="row">
-                          <div class="col">
-                            date time blah blah
-                          </div>
-                          <div class="col text-end">
-                            icon
-                          </div>
-                        </div>
-                      </div>
-                      <h5 class="card-title">
-                        Special title treatment
-                      </h5>
-                      <p class="card-text">
-                        With supporting text below as a natural lead-in to
-                        additional content.
-                      </p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+							{{#each reviews as |review|}}
+	              <div class="card mt-4">
+	                <div class="row">
+	                  <div class="col-1">
+											<img src="{{review.author.avatar}}" />
+										</div>
+	                  <div class="col-11">
+	                    <div class="card-body">
+	                      <div class="container p-0">
+	                        <div class="row">
+	                          <div class="col">
+	                            date time
+	                          </div>
+	                          <div class="col text-end">
+	                            icon thumbs up/down
+	                          </div>
+	                        </div>
+	                      </div>
+	                      <p class="card-text">
+	                        {{review.description}}
+	                      </p>
+	                    </div>
+	                  </div>
+	                </div>
+	              </div>
+							{{/ each}}
             </div>
           </div>
         </div>

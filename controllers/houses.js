@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 const Houses = require('../models/houses')
 const Bookings = require('../models/bookings')
+const Reviews = require('../models/reviews')
 
 // Root
 router.get('/', async (req, res) => {
@@ -80,7 +81,15 @@ router.get('/:id', async (req, res) => {
         ? true
         : false
       // console.log(bookingExists)
+      // console.log('get id find reviews...')
+      // !!! only pull through avatar and name - leave pw and email out
+      let reviews = await Reviews.find({ house: req.params.id }).populate(
+        'author'
+      )
+      // console.log(reviews)
+      //find all the reviews in the database, that belong to the house in question.
 
+      //Then pass the reviews array as `reviews` to the template.
       res.render('../views/houses/one', {
         // !!! Populate its host field with host object - then pull user.name - ???
         user: req.user.name,
@@ -88,7 +97,8 @@ router.get('/:id', async (req, res) => {
         house, // !!! - can I do await in-line here?
         hostName: house.host.name,
         hostAvatar: house.host.avatar,
-        bookingExists
+        bookingExists,
+        reviews
       })
     } else {
       res.render('../views/houses/one', {
