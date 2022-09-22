@@ -163,6 +163,7 @@ router.patch('/:id', async (req, res) => {
       if (command == 'update') {
         // update house in db
         console.log('update')
+        // !!! doesn't update photos
         await Houses.findByIdAndUpdate(req.params.id, req.body)
         // redirect to that house page
         res.redirect(`/houses/${req.params.id}`)
