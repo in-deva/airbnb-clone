@@ -2,7 +2,6 @@
 const express = require('express')
 const router = express.Router()
 const Houses = require('../models/houses')
-const Bookings = require('../models/houses')
 
 // Root
 router.get('/', async (req, res) => {

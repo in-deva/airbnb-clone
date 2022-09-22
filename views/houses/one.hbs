@@ -197,27 +197,26 @@
       </div>
       <!-- end property details -->
       <!-- booking section -->
-      <!-- Form wants shadow and to scroll with page (position fixed or something?) -->
+      <!-- !!! Form wants shadow and to scroll with page (position fixed or something?) -->
       <div class="col-4 offset-1">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">{{house.price}}</h5>
-						<!-- !!^above wants to be part of a string for $ per night added -->
+            <h5 class="card-title">${{house.price}}/night</h5>
             <h6 class="card-subtitle mb-2 text-muted">
               <span>
                 <i class="fa-solid fa-thumbs-up mx-2 my-2"></i> X
                 Reviews</span
               >
             </h6>
-            <!-- !!! needs to be in a form -->
-            <form>
+            <form action="/bookings" method="post">
               <div class="input-group">
                 <textarea
                   class="form-control"
-                  aria-label="With textarea"
+									name="description"
                   placeholder="Send the host a message..."
                 ></textarea>
               </div>
+							<input type="hidden" value="{{house._id}}" name="house" />
               <button class="btn btn-primary my-2">Request Booking</button>
             </form>
           </div>
