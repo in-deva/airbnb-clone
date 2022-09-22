@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
           price:
             req.query.maxPrice == ''
               ? { $gte: 0 }
-              : { $lt: req.query.maxPrice },
+              : { $lte: req.query.maxPrice },
           title: { $regex: req.query.title, $options: 'i' }
         }
       : {}
@@ -69,6 +69,7 @@ router.get('/:id', async (req, res) => {
   try {
     let house = await Houses.findById(req.params.id).populate('host')
     // Render the houses/one template, passing the house object
+    // !!! make this work even when you're not signed in
     if (req.isAuthenticated()) {
       // house form template needs house and user id to determine form block
       // !!! why the two lines below?

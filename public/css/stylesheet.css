@@ -29,6 +29,11 @@ take background image off of body on login/signup, put on a div
   width: 60px;
 }
 
+.avatar-img-round {
+  border-radius: 70%;
+  width: 100px;
+}
+
 .background-image {
   background-image: url(https://res.cloudinary.com/dsko6ntfj/image/upload/v1642399115/portal/web%20development%20beginners/05%20Project%20Airbnb/assets/thailand.jpg);
   margin: 0px;
