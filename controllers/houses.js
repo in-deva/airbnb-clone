@@ -73,23 +73,14 @@ router.get('/:id', async (req, res) => {
     if (req.isAuthenticated()) {
       // house form template needs house and user id to determine form block
       // console.log(req.user)
-      let userID = req.user._id
-      let houseID = req.params.id
-      // console.log(userID)
-      // console.log(houseID)
-      // let bookingExists = await Bookings.findOne({
-      //   author: userID,
-      //   house: houseID
-      // })
-      // console.log(bookingExists)
       let bookingExists = (await Bookings.findOne({
-        author: userID,
-        house: houseID
+        author: req.user._id,
+        house: req.params.id
       }))
         ? true
         : false
       // console.log(bookingExists)
-      // console.log('authed')
+
       res.render('../views/houses/one', {
         // !!! Populate its host field with host object - then pull user.name - ???
         user: req.user.name,
