@@ -2,28 +2,30 @@
 const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
+const ObjectId = mongoose.Schema.Types.ObjectId
 
 // Model
 module.exports = mongoose.model('reviews', {
   author: {
-    type: id,
+    type: ObjectId,
     required: true,
-    reference: users
+    reference: 'users'
   },
   date: {
-    type: date,
-    required: true
+    type: Date,
+    required: true,
+    default: Date.now
   },
   description: {
     type: String,
     required: true
   },
   house: {
-    type: id,
+    type: ObjectId,
     required: true,
-    reference: houses
+    reference: 'houses'
   },
   rating: {
-    type: number
+    type: Number
   }
 })

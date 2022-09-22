@@ -145,13 +145,14 @@
             <div class="" name="listing-reviews">
               <!-- review detail/form -->
               <h1>X reviews</h1>
-              <form class="" name="leave-review">
-                <span>leave a review</span>
+              <form action="/reviews" method="post">
+								<input type="hidden" value="{{house._id}}" name="house" />
+                <span>Leave a review</span>
                 <div class="input-group">
                   <textarea
                     class="form-control"
-                    aria-label="With textarea"
                     placeholder="Send the host a message..."
+										name="description"
                   ></textarea>
                 </div>
                 <div>
