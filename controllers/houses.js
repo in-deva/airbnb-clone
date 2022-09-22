@@ -2,6 +2,7 @@
 const express = require('express')
 const router = express.Router()
 const Houses = require('../models/houses')
+const Bookings = require('../models/bookings')
 
 // Root
 router.get('/', async (req, res) => {
@@ -66,18 +67,37 @@ router.get('/:id', async (req, res) => {
   // console.log('houses/:id get route')
   try {
     // !!! fix these - house vs housePop
-    let house = await Houses.findById(req.params.id)
-    let housePop = await Houses.findById(req.params.id).populate('host')
+    // let house = await Houses.findById(req.params.id)
+    let house = await Houses.findById(req.params.id).populate('host')
     // Render the houses/one template, passing the house object
     if (req.isAuthenticated()) {
+      // house form template needs house and user id to determine form block
+      // console.log(req.user)
+      let userID = req.user._id
+      let houseID = req.params.id
+      // console.log(userID)
+      // console.log(houseID)
+      // let bookingExists = await Bookings.findOne({
+      //   author: userID,
+      //   house: houseID
+      // })
+      // console.log(bookingExists)
+      let bookingExists = (await Bookings.findOne({
+        author: userID,
+        house: houseID
+      }))
+        ? true
+        : false
+      // console.log(bookingExists)
       // console.log('authed')
       res.render('../views/houses/one', {
         // !!! Populate its host field with host object - then pull user.name - ???
         user: req.user.name,
         auth: req.isAuthenticated(),
         house, // !!! - can I do await in-line here?
-        hostName: housePop.host.name,
-        hostAvatar: housePop.host.avatar
+        hostName: house.host.name,
+        hostAvatar: house.host.avatar,
+        bookingExists
       })
     } else {
       res.render('../views/houses/one', {
