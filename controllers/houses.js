@@ -103,7 +103,7 @@ router.get('/:id/edit', async (req, res) => {
       // console.log('authed')
       // console.log(req.query.listingID)
       let house = await Houses.findById(req.query.listingID)
-      console.log(house)
+      // console.log(house)
       res.render('../views/houses/edit', {
         user: req.user.name,
         auth: req.isAuthenticated(),
@@ -125,6 +125,7 @@ router.post('/', async (req, res) => {
     if (req.isAuthenticated()) {
       // console.log('authed')
       req.body.host = req.user._id
+      // !!! remove nested catch
       try {
         // console.log('created house')
         await Houses.create(req.body)
@@ -144,13 +145,26 @@ router.post('/', async (req, res) => {
 })
 
 // Patch :id
-router.patch('/', async (req, res) => {
-  // console.log('houses patch route')
+router.patch('/:id', async (req, res) => {
+  console.log('houses patch route')
   try {
     if (req.isAuthenticated()) {
       // console.log('authed')
-      // !!! house edit code here ...
-      // res.render('../views/houses/edit')
+      // console.log(req.body)
+      // extract command, clean object for find
+      command = req.body.command
+      // console.log(command)
+      delete req.body.command
+      let house = await Houses.findOne(req.body)
+      // console.log(house)
+      if (command == 'edit') {
+        // update house in db
+        // redirect to that house page
+      } else {
+        // delete house from db
+        // redirect to profile
+        // backburner: are you sure?
+      }
     } else {
       console.log('not logged in')
       res.redirect('/auth/login')

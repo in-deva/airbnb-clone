@@ -13,7 +13,7 @@ contents
 -->
   <div class="container mb-5">
     <!-- Content here -->
-    <form action="/houses" method="post">
+    <form action="/houses/:id?_method=PATCH" method="post">
       <h1>Edit a House</h1>
       <div class="mb-3">
         <label class="form-label">Short Title</label>
@@ -131,7 +131,9 @@ contents
           aria-describedby="."
         />
       </div>
-      <button class="btn btn-primary">Submit</button>
+			<!-- !!! needs different buttons - Update and Delete -->
+      <button class="btn btn-primary" name="command" value="update">Update</button>
+			<button class="btn btn-primary" name="command" value="delete">Delete</button>
     </form>
   </div>
 </body>
