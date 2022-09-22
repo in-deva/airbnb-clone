@@ -52,8 +52,14 @@ take background image off of body on login/signup, put on a div
 /* !!! Style this button how I want it */
 /* <button type="submit" class="btn btn-primary">Signup</button> */
 .btn-primary {
-  background-color: orange;
+  background-color: #049890;
+  border-color: #049890;
 }
+
+.shadowed {
+  box-shadow: 5px 5px 5px 2px grey;
+}
+/* for request form  */
 
 /* !!! style these */
 /* class="fa-solid fa-thumbs-up" */

@@ -56,7 +56,8 @@
                     </span>
                   </div>
                   <div class="col">
-                    {{house.rooms}}
+										<!-- !!! if 1 == room else rooms -->
+                    {{house.rooms}} rooms
                   </div>
                 </div>
               </div>
@@ -143,7 +144,7 @@
       <!-- !!! Form wants shadow and to scroll with page (position fixed or something?) -->
       <div class="col-4 offset-1">
         <div class="card">
-          <div class="card-body">
+          <div class="card-body shadowed">
             <h5 class="card-title">${{house.price}}/night</h5>
             <h6 class="card-subtitle mb-2 text-muted">
               <span>
