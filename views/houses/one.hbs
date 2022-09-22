@@ -208,6 +208,7 @@
                 Reviews</span
               >
             </h6>
+						<!-- no booking yet -->
             <form action="/bookings" method="post">
               <div class="input-group">
                 <textarea
@@ -219,6 +220,8 @@
 							<input type="hidden" value="{{house._id}}" name="house" />
               <button class="btn btn-primary my-2">Request Booking</button>
             </form>
+						<!-- booking exists -->
+						<div class="p-3 mb-2 bg-success text-white">Booking request sent!</div>
           </div>
         </div>
       </div>

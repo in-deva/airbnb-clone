@@ -19,11 +19,11 @@ router.post('/', async (req, res) => {
         house: req.body.house,
         description: req.body.description
       }
-      console.log(booking)
+      // console.log(booking)
       await Bookings.create(booking)
-
       // then render page with 'booking complete block (haven't actually made this yet)'
-      // res.render('../views/bookings')
+      // ! render bookings, nothing else needed. bookings pulls user id and house id itself to check
+      res.redirect(`/houses/${req.body.house}`)
     } else {
       console.log('not logged in')
       res.redirect('/auth/login')
