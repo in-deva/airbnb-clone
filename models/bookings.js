@@ -13,7 +13,7 @@ module.exports = mongoose.model('bookings', {
   date: {
     type: date,
     required: true,
-    default: now
+    default: Date.Now
   },
   description: {
     type: String,

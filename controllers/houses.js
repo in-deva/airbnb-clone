@@ -1,8 +1,8 @@
 // Packages
 const express = require('express')
 const router = express.Router()
-
 const Houses = require('../models/houses')
+const Bookings = require('../models/houses')
 
 // Root
 router.get('/', async (req, res) => {
@@ -146,7 +146,7 @@ router.post('/', async (req, res) => {
 
 // Patch :id
 router.patch('/:id', async (req, res) => {
-  console.log('houses patch route')
+  console.log('houses/:id patch route')
   try {
     if (req.isAuthenticated()) {
       // console.log('authed')
@@ -162,7 +162,12 @@ router.patch('/:id', async (req, res) => {
         // redirect to that house page
       } else {
         // delete house from db
+        // console.log('delete')
+        // console.log(house._id)
+        await Houses.findByIdAndDelete(house._id)
         // redirect to profile
+        res.redirect('/profile')
+        console.log('house deleted')
         // backburner: are you sure?
       }
     } else {
