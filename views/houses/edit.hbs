@@ -1,16 +1,8 @@
-<!-- house create page, different title, bonus: fields autopopulated -->
-
 <body>
 	<!-- nav -->
 	{{> nav}}
   <!-- houses form -->
-  <!-- !!! how to make sure all cards go to the same height always? -->
   <!-- create listing form -->
-  <!--
-container
-form
-contents
--->
   <div class="container mb-5">
     <!-- Content here -->
     <form action="/houses/{{house._id}}?_method=PATCH" method="post">

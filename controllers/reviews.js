@@ -6,18 +6,15 @@ const Reviews = require('../models/reviews')
 // Get root
 router.post('/', async (req, res) => {
   try {
-    console.log('reviews get route')
+    // console.log('reviews get route')
     if (req.isAuthenticated()) {
-      // console.log('authed')
       // Use the POST `/reviews` controller to create a review, then redirect to the house page.
-      console.log('hereeeeee')
-      console.log(req.user._id)
       await Reviews.create({
         author: req.user._id,
         house: req.body.house,
         description: req.body.description
       })
-      console.log('review created')
+      // console.log('review created')
       res.redirect(`houses/${req.body.house}`)
     } else {
       // console.log('not logged in')

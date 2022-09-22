@@ -67,31 +67,23 @@ router.get('/create', async (req, res) => {
 router.get('/:id', async (req, res) => {
   // console.log('houses/:id get route')
   try {
-    // !!! fix these - house vs housePop
-    // let house = await Houses.findById(req.params.id)
     let house = await Houses.findById(req.params.id).populate('host')
     // Render the houses/one template, passing the house object
     if (req.isAuthenticated()) {
       // house form template needs house and user id to determine form block
-      // console.log(req.user)
+      // !!! why the two lines below?
       let bookingExists = (await Bookings.findOne({
         author: req.user._id,
         house: req.params.id
       }))
         ? true
         : false
-      // console.log(bookingExists)
-      // console.log('get id find reviews...')
+      //find all the reviews in the database, that belong to the house in question
       // !!! only pull through avatar and name - leave pw and email out
       let reviews = await Reviews.find({ house: req.params.id }).populate(
         'author'
       )
-      // console.log(reviews)
-      //find all the reviews in the database, that belong to the house in question.
-
-      //Then pass the reviews array as `reviews` to the template.
       res.render('../views/houses/one', {
-        // !!! Populate its host field with host object - then pull user.name - ???
         user: req.user.name,
         auth: req.isAuthenticated(),
         house, // !!! - can I do await in-line here?
@@ -103,8 +95,7 @@ router.get('/:id', async (req, res) => {
     } else {
       res.render('../views/houses/one', {
         // !!! Populate its host field with host object - then pull user.name - ???
-        // user: req.user.name,
-        // auth: req.isAuthenticated(),
+        // !!! test this - how it looks not logged in (same logic elsewhere)
         house, // !!! - can I do await in-line here?
         hostName: housePop.host.name,
         hostAvatar: housePop.host.avatar
@@ -117,13 +108,11 @@ router.get('/:id', async (req, res) => {
 
 // Get :id/edit
 router.get('/:id/edit', async (req, res) => {
-  console.log('houses/id/edit get route')
+  // console.log('houses/id/edit get route')
   try {
     if (req.isAuthenticated()) {
       // console.log('authed')
-      // console.log(req.query.listingID)
       let house = await Houses.findById(req.query.listingID)
-      // console.log(house)
       res.render('../views/houses/edit', {
         user: req.user.name,
         auth: req.isAuthenticated(),
@@ -166,26 +155,17 @@ router.post('/', async (req, res) => {
 
 // Patch :id
 router.patch('/:id', async (req, res) => {
-  console.log('houses/:id patch route')
+  // console.log('houses/:id patch route')
   try {
     if (req.isAuthenticated()) {
       // console.log('authed')
       // extract command, clean object for find
       command = req.body.command
-      // console.log(command)
       delete req.body.command
-      // console.log('body:')
-      // console.log(req.body)
-      // console.log(req.params.id)
-      // let house = await Houses.findOne(req.body)
-      // let house = await Houses.findById(req.params.id)
-      // console.log(house)
       if (command == 'update') {
-        // update house in db
-        console.log('update')
+        // console.log('update')
         // !!! doesn't update photos
         await Houses.findByIdAndUpdate(req.params.id, req.body)
-        // redirect to that house page
         res.redirect(`/houses/${req.params.id}`)
       } else {
         // delete house from db
@@ -195,7 +175,7 @@ router.patch('/:id', async (req, res) => {
         // redirect to profile
         res.redirect('/profile')
         console.log('house deleted')
-        // backburner: are you sure?
+        // !!! backburner: are you sure?
       }
     } else {
       console.log('not logged in')
@@ -207,13 +187,12 @@ router.patch('/:id', async (req, res) => {
 })
 
 // Delete :id
+// !!!
 router.delete('/:id', async (req, res) => {
   // console.log('houses delete route')
   try {
     if (req.isAuthenticated()) {
       // console.log('authed')
-      // !!! house delete code here ...
-      // res.render('../views/houses/edit')
     } else {
       console.log('not logged in')
       res.redirect('/auth/login')

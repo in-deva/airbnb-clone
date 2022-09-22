@@ -2,13 +2,7 @@
 	<!-- nav -->
 	{{> nav}}
   <!-- houses form -->
-  <!-- !!! how to make sure all cards go to the same height always? -->
   <!-- create listing form -->
-  <!--
-container
-form
-contents
--->
   <div class="container mb-5">
     <!-- Content here -->
     <form action="/houses" method="post">
@@ -60,7 +54,7 @@ contents
       <!-- Add photos - 1 label then multiple inputs text with placeholder -->
       <div class="mb-3">
         <label class="form-label">Add Photos (up to 9)</label>
-				<!-- make handlebars repeat the block 9 times -->
+				<!-- make handlebars repeat the block 9 times ? -->
 				<!-- {{#each photos as |photo|}} -->
 	        <input
 						name="photos"
