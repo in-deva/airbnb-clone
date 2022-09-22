@@ -150,21 +150,27 @@ router.patch('/:id', async (req, res) => {
   try {
     if (req.isAuthenticated()) {
       // console.log('authed')
-      // console.log(req.body)
       // extract command, clean object for find
       command = req.body.command
       // console.log(command)
       delete req.body.command
-      let house = await Houses.findOne(req.body)
+      // console.log('body:')
+      // console.log(req.body)
+      // console.log(req.params.id)
+      // let house = await Houses.findOne(req.body)
+      // let house = await Houses.findById(req.params.id)
       // console.log(house)
-      if (command == 'edit') {
+      if (command == 'update') {
         // update house in db
+        console.log('update')
+        await Houses.findByIdAndUpdate(req.params.id, req.body)
         // redirect to that house page
+        res.redirect(`/houses/${req.params.id}`)
       } else {
         // delete house from db
-        // console.log('delete')
-        // console.log(house._id)
-        await Houses.findByIdAndDelete(house._id)
+        console.log('delete')
+        await Houses.findByIdAndDelete(req.params.id)
+        console.log('deleted')
         // redirect to profile
         res.redirect('/profile')
         console.log('house deleted')
