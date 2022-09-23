@@ -25,8 +25,9 @@
         <input name="rooms" type="number" class="form-control" required />
       </div>
       <!-- Location - select -->
-      <div class="input-group">
-				<div class="input-group">Location
+      <div class="mb-3">
+				<label class="form-label">Location</label>
+				<div class="input-group">
 					<span class="input-group-text">
 						<i class="fa-solid fa-location-dot"></i
 					></span>
@@ -46,16 +47,17 @@
 				</div>
       </div>
       <!-- Price - !!! fix $ icon bit  -->
-      <div class="mb 3">
+			<div class="mb-3">
         <label class="form-label">Price (per night)</label>
-        <span class="input-group-text fw-bold">$</span>
+				<div class="input-group">
+					<span class="input-group-text fw-bold">$</span>
         <input type="number" name="price" class="form-control" required />
-      </div>
-      <!-- Add photos - 1 label then multiple inputs text with placeholder -->
+				</div>
+			</div>
+      <!-- Photos -->
       <div class="mb-3">
         <label class="form-label">Add Photos (up to 9)</label>
-				<!-- make handlebars repeat the block 9 times ? -->
-				<!-- {{#each photos as |photo|}} -->
+				<!-- ! make handlebars repeat the block 9 times ? would need empty array of 9 to count through -->
 	        <input
 						name="photos"
 	          type="text"
@@ -63,7 +65,6 @@
 	          placeholder="http://..."
 	          aria-describedby="."
 	        />
-				<!-- {{/each}} -->
         <input
 					name="photos"
           type="text"
