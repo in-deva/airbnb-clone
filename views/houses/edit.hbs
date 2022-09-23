@@ -53,77 +53,18 @@
         <span class="input-group-text fw-bold">$</span>
         <input type="number" name="price" value="{{house.price}}" class="form-control" required />
       </div>
-      <!-- Add photos - 1 label then multiple inputs text with placeholder -->
-			<!-- !!! for each logic on house.photos -->
       <div class="mb-3">
         <label class="form-label">Add Photos (up to 9)</label>
-				<!-- make handlebars repeat the block 9 times -->
-				<!-- {{#each photos as |photo|}} -->
+				{{#each house.photos as |photo|}}
 	        <input
 						name="photos"
 	          type="text"
 	          class="mb-2 form-control"
 	          placeholder="http://..."
-	          aria-describedby="."
+	          value="{{photo}}"
 	        />
-				<!-- {{/each}} -->
-        <input
-					name="photos"
-          type="text"
-          class="mb-2 form-control"
-          placeholder="http://..."
-          aria-describedby="."
-        />
-        <input
-					name="photos"
-          type="text"
-          class="mb-2 form-control"
-          placeholder="http://..."
-          aria-describedby="."
-        />
-        <input
-					name="photos"
-          type="text"
-          class="mb-2 form-control"
-          placeholder="http://..."
-          aria-describedby="."
-        />
-        <input
-          type="text"
-          class="mb-2 form-control"
-          placeholder="http://..."
-          aria-describedby="."
-        />
-        <input
-					name="photos"
-          type="text"
-          class="mb-2 form-control"
-          placeholder="http://..."
-          aria-describedby="."
-        />
-        <input
-					name="photos"
-          type="text"
-          class="mb-2 form-control"
-          placeholder="http://..."
-          aria-describedby="."
-        />
-        <input
-					name="photos"
-          type="text"
-          class="mb-2 form-control"
-          placeholder="http://..."
-          aria-describedby="."
-        />
-        <input
-					name="photos"
-          type="text"
-          class="mb-2 form-control"
-          placeholder="http://..."
-          aria-describedby="."
-        />
+				{{/each}}
       </div>
-			<!-- !!! needs different buttons - Update and Delete -->
       <button class="btn btn-primary" name="command" value="update">Update</button>
 			<button class="btn btn-primary" name="command" value="delete">Delete</button>
     </form>
