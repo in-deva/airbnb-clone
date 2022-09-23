@@ -11,6 +11,7 @@
       <div class="col">
         <img
           class="img-lg img-fluid"
+					id="bigPic"
           src="{{house.photos.[0]}}"
           alt=""
 					onclick="logHi()"
@@ -28,7 +29,7 @@
 	              <img
 	                class="img-lg img-fluid p-1"
 	                src={{photo}}
-									onclick="logHi()"
+									onclick="sendLink(this)"
 	              />
 	            </div>
 						{{/each}}

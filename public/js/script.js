@@ -15,13 +15,30 @@ function changes the image source of the large image
 
 */
 
-// console.log('hi
-
 function logHi() {
   console.log('hi')
 }
-
 logHi()
+
+function logThis(el) {
+  console.log(el)
+}
+
+function sendLink(el) {
+  console.log(el.src)
+  bigPic = `<img
+	          class="img-lg img-fluid"
+	          src="${el.src}"
+	          alt=""
+						onclick="logHi()"
+	        />`
+  console.log(bigPic)
+  document.querySelector('#bigPic').src = el.src
+  // let img = document.querySelector('img')
+  // img.src = 'mountain.jpg'
+}
+
+// <img class="img-lg img-fluid p-1" src="https://a0.muscache.com/im/pictures/a5d8bbcc-cf29-4532-9e5e-4aa26503237f.jpg?im_w=720" onclick="logThis(this)">
 
 // let productsButtons = document.querySelectorAll('.product > button')
 // let main = document.querySelector('#main')
