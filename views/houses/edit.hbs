@@ -57,6 +57,8 @@
       </div>
       <div class="mb-3">
         <label class="form-label">Add Photos (up to 9)</label>
+				<!-- !!! this loop doesn't work, does it, because it doesn't go up to 9 everytime. -->
+				<!-- needs to be either looped better or hardcoded to always be 9 -->
 				{{#each house.photos as |photo|}}
 	        <input
 						name="photos"
