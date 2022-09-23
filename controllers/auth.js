@@ -50,7 +50,7 @@ router.post('/login', async (req, res) => {
         if (err) {
           throw 'error' //!!!properly - user already exists, go login, or else...
         }
-        console.log('logged in')
+        // console.log('logged in')
         res.redirect('../houses')
       })
     } else {
