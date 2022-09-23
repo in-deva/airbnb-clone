@@ -14,7 +14,6 @@
 					id="bigPic"
           src="{{house.photos.[0]}}"
           alt=""
-					onclick="logHi()"
         />
 				<!-- <button onclick="add(1,2)">Click me</button> -->
       </div>
@@ -29,7 +28,7 @@
 	              <img
 	                class="img-lg img-fluid p-1"
 	                src={{photo}}
-									onclick="sendLink(this)"
+									onclick="setBigPic(this)"
 	              />
 	            </div>
 						{{/each}}
