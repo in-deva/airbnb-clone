@@ -13,7 +13,9 @@
           class="img-lg img-fluid"
           src="{{house.photos.[0]}}"
           alt=""
+					onclick="logHi()"
         />
+				<!-- <button onclick="add(1,2)">Click me</button> -->
       </div>
       <!-- 3*3 image grid -->
 			<!-- for each image in house.photos  -->
@@ -26,7 +28,7 @@
 	              <img
 	                class="img-lg img-fluid p-1"
 	                src={{photo}}
-	                alt=""
+									onclick="logHi()"
 	              />
 	            </div>
 						{{/each}}
