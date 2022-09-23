@@ -25,8 +25,10 @@
         <input name="rooms" value="{{house.rooms}}" type="number" class="form-control" required />
       </div>
       <!-- Location - select -->
+			      <div class="mb-3">
       <div class="input-group">
-				<div class="input-group">Location
+								<label class="form-label">Location</label>
+				<div class="input-group">
 					<span class="input-group-text">
 						<i class="fa-solid fa-location-dot"></i
 					></span>
@@ -48,8 +50,10 @@
       <!-- Price - !!! fix $ icon bit  -->
       <div class="mb 3">
         <label class="form-label">Price (per night)</label>
+								<div class="input-group">
         <span class="input-group-text fw-bold">$</span>
         <input type="number" name="price" value="{{house.price}}" class="form-control" required />
+								</div>
       </div>
       <div class="mb-3">
         <label class="form-label">Add Photos (up to 9)</label>
