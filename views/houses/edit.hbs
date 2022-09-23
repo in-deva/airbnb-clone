@@ -33,17 +33,15 @@
 					<select
 						class="form-select"
 						name="location"
-						value="{{house.location}}"
 						id="inputGroupSelect03"
 						aria-label="Example select with button addon"
 						required
 					>
-						<!-- !!! replace with locations from the houses? -->
-						<!-- !!! what logic is required here to select the option from the data input? -->
-						<option>Any Location</option>
-						<option>Koh Samui</option>
-						<option>Koh Phangan</option>
-						<option>Koh Tao</option>
+					<!-- !!! Remove 'any location' from options on create, then remove here -->
+						<option {{#ifEq house.location "Any Location"}} selected {{/ifEq}} >Any Location</option>
+						<option {{#ifEq house.location "Koh Samui"}} selected {{/ifEq}} >Koh Samui</option>
+						<option {{#ifEq house.location "Koh Phangan"}} selected {{/ifEq}} >Koh Phangan</option>
+						<option {{#ifEq house.location "Koh Tao"}} selected {{/ifEq}} >Koh Tao</option>
 					</select>
 				</div>
       </div>
