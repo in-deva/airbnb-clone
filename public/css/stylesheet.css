@@ -73,6 +73,33 @@ take background image off of body on login/signup, put on a div - why though? it
   overflow: hidden;
 }
 
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  width: 100%;
+  padding-right: var(--bs-gutter-x);
+  /* , 0.75rem); */
+  padding-left: var(--bs-gutter-x);
+  /* , 0.75rem); */
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#filters > .row > * {
+  /* flex-shrink: 0;
+  width: 100%;
+  max-width: 100%; */
+  padding-left: 2px;
+  padding-right: 2px;
+  /* padding-right: calc(var(--bs-gutter-x) * 0.5); */
+  /* padding-left: calc(var(--bs-gutter-x) * 0.5); */
+  /* margin-top: var(--bs-gutter-y); */
+}
+
 /* !!! style these */
 /* class="fa-solid fa-thumbs-up" */
 /* <i class="fa-solid fa-thumbs-down"></i> */

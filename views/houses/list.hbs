@@ -6,9 +6,9 @@
   <div class="p-1 bg-light text-dark border-top">
     <div class="container-md my-3">
       <div class="container">
-				<form action="/houses" method="get">
+				<form action="/houses" method="get" id="filters">
 	        <div class="row">
-	          <div class="col">
+	          <div class="col-2">
 							<!-- location -->
 	            <div class="input-group">
 	              <span class="input-group-text">
@@ -27,7 +27,7 @@
 	              </select>
 	            </div>
 	          </div>
-	          <div class="col">
+	          <div class="col-2">
 							<!-- rooms -->
 	            <div class="input-group">
 	              <span class="input-group-text"
@@ -46,7 +46,7 @@
 	              </select>
 	            </div>
 	          </div>
-	          <div class="col">
+	          <div class="col-2">
 							<!-- price -->
 	            <div class="input-group">
 	              <span class="input-group-text fw-bold">$</span>
@@ -58,7 +58,7 @@
 	              />
 	            </div>
 	          </div>
-	          <div class="col">
+	          <div class="col-2">
 							<!-- sort -->
 	            <div class="input-group">
 	              <span class="input-group-text"
@@ -73,7 +73,7 @@
 	              </select>
 	            </div>
 	          </div>
-	          <div class="col">
+	          <div class="col-2">
 							<!-- title -->
 	            <div class="input-group">
 	              <input
@@ -86,7 +86,7 @@
 	              />
 	            </div>
 	          </div>
-	          <div class="col">
+	          <div class="col col-md-auto">
 							<input
 								type="hidden"
 								name="filtering"
@@ -94,17 +94,13 @@
 							/>
 	            <button class="btn btn-primary">Search</button>
 	          </div>
-	        </div>
+						<div class="col col-md-auto">
+							<!-- !!! format to be next to submit and different outline -->
+							<a class="btn btn-outline-secondary" href='/houses'>Reset</a>
+						</div>
 				</form>
-				<div class="col">
-					<input
-						type="hidden"
-						name="filtering"
-						value="true"
-					/>
-					<!-- !!! format to be next to submit and different outline -->
-					<a class="btn btn-outline" href='/houses'>Reset</a>
-				</div>
+
+					        </div>
       </div>
     </div>
   </div>
