@@ -1,8 +1,7 @@
+<!-- !!! look into media queries & responsive layout -->
 <body>
 	<!-- nav -->
 	{{> nav}}
-  <!-- houses form -->
-  <!-- !!! how to make sure all cards go to the same height always? -->
   <!-- houses form -->
   <div class="p-1 bg-light text-dark border-top">
     <div class="container-md my-3">
@@ -21,7 +20,6 @@
 	                id="inputGroupSelect03"
 	                aria-label="Example select with button addon"
 	              >
-	                <!-- !!! replace with locations from the houses? -->
 	                <option selected value="any">Any Location</option>
 	                <option>Koh Samui</option>
 	                <option>Koh Phangan</option>
@@ -70,11 +68,8 @@
 	                class="form-select"
 									name="sort"
 	              >
-	                <!-- replace these with options -->
-	                <!-- <option>Choose...</option> -->
 	                <option value="price" >Price (low to high)</option>
 	                <option value="-price">Price (high to low)</option>
-	                <!-- <option value="3">Price (another)</option> -->
 	              </select>
 	            </div>
 	          </div>
@@ -97,7 +92,6 @@
 								name="filtering"
 								value="true"
 							/>
-	            <!-- !!! replace - button to submit form -->
 	            <button class="btn btn-primary">Search</button>
 	          </div>
 	        </div>
@@ -121,11 +115,11 @@
       <!-- houses hbs loop -->
 			{{#each houses as |house|}}
 	      <div class="col my-2">
-	        <div class="card">
+	        <div class="card card-img">
 						<a href="/houses/{{house._id}}" class="stretched-link"></a>
 	          <img
 	            src="{{house.photos.[0]}}"
-	            class="card-img-top"
+	            class="card-img-top houses-img img-fluid"
 	            alt="..."
 	          />
 	          <div class="card-body">

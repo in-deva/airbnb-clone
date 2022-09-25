@@ -2,7 +2,7 @@
 !!! Project to do
 
 check all forms, give all form elements a name
-take background image off of body on login/signup, put on a div
+take background image off of body on login/signup, put on a div - why though? it works?
 
  */
 
@@ -56,10 +56,22 @@ take background image off of body on login/signup, put on a div
   border-color: #049890;
 }
 
+/* for request form  */
 .shadowed {
   box-shadow: 5px 5px 5px 2px grey;
 }
-/* for request form  */
+
+.houses-img {
+  height: 30vh;
+  /* width: auto; */
+  border-radius: 1%;
+  min-width: 30vw;
+  object-fit: cover;
+}
+
+.card-img {
+  overflow: hidden;
+}
 
 /* !!! style these */
 /* class="fa-solid fa-thumbs-up" */
