@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
 router.get('/login', async (req, res) => {
   // console.log('login get route')
   try {
+    // !!! if alrady authed, redirect to houses page
     res.render('../views/login')
   } catch (err) {
     // !!! properly
@@ -48,7 +49,9 @@ router.post('/login', async (req, res) => {
       // login match
       req.login(user, err => {
         if (err) {
-          throw 'error' //!!!properly - user already exists, go login, or else...
+          throw 'error'
+          //!!!properly - user already exists, go login, or else...
+          // email or password is incorrect (if no match found, display this... (with signup/forgot passwrod option))
         }
         // console.log('logged in')
         res.redirect('../houses')
@@ -68,8 +71,9 @@ router.post('/signup', async (req, res) => {
   try {
     let user = await Users.create(req.body)
     // console.log('user created')
-    //run identical login process
+    // run identical login process
     // !!! (exact copy, make better)
+    // !!! display better - user already exists - login?
     user = await Users.findOne(req.body)
     if (user) {
       req.login(user, err => {
