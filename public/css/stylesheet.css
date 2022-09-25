@@ -45,6 +45,11 @@ take background image off of body on login/signup, put on a div - why though? it
   height: 100vh;
 }
 
+.background-image div.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .background-image > div > div {
   height: 100vh;
 }
@@ -100,6 +105,10 @@ take background image off of body on login/signup, put on a div - why though? it
 .display-inline {
   display: inline;
   background-color: yellow;
+}
+
+.list-group-item {
+  border: 0;
 }
 
 #filters > .row > * {

@@ -1,79 +1,78 @@
-<body class="background-image">
+<div class="background-image">
   <!-- login form card -->
-  <!-- !!! need to make this centred -->
-  <!-- need to remove lines between inputs -->
-  <!-- text smaller than on signup page -->
-	<!-- !!! remove ids? -->
-  <div class="row justify-content-center align-items-center">
-    <div class="col-4">
-      <div class="card width-cust">
-				<!-- form start -->
-        <form action="/auth/signup" method='post'>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label"
-                  >Your Full Name</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-									name="name"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                />
-              </div>
-            </li>
-            <li class="list-group-item">
-              <div class="mb-3">
-                <label>Profile Picture</label>
-                <input
-                  type="text"
-                  class="mb-3 form-control"
-									name="avatar"
-                  placeholder="http://..."
-                  aria-describedby="."
-                />
-              </div>
-            </li>
-            <li class="list-group-item">
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label"
-                  >Email address</label
-                >
-                <input
-                  type="email"
-                  class="form-control"
-									name="email"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                />
-              </div>
-            </li>
-            <li class="list-group-item">
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label"
-                  >Password</label
-                >
-                <input
-                  type="password"
-                  class="form-control"
-									name="password"
-                  id="exampleInputPassword1"
-                />
-              </div>
-            </li>
-            <li class="list-group-item">
-              <!-- !!! change formatting -->
-              <button class="btn btn-primary">Signup</button>
-            </li>
-          </ul>
-        </form>
-        <!-- end signup form -->
-        <!-- login line -->
-        <p>Already have an account? <a href="#">Login</a></p>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
+  <!-- !!! need to make this centred (not at top) -->
+	<div class="container">
+	  <div class="row justify-content-center align-items-center">
+	    <div class="col-4">
+	      <div class="card width-cust">
+					<div class="my-1 mx-auto text-align-center">
+						<img
+							class="navbar-brand logo text-align-center"
+							src="/images/logo-airbnb.png"
+							alt="airbnb logo"
+						/>
+					</div>
+					<!-- form start -->
+	        <form action="/auth/signup" method='post'>
+	          <ul class="list-group list-group-flush">
+	            <li class="list-group-item">
+	              <div class="mb-1">
+	                <label class="form-label"
+	                  >Your Full Name</label
+	                >
+	                <input
+	                  type="text"
+	                  class="form-control"
+										name="name"
+	                />
+	              </div>
+	            </li>
+	            <li class="list-group-item">
+	              <div class="mb-1">
+	                <label>Profile Picture</label>
+	                <input
+	                  type="text"
+	                  class="mb-1 form-control"
+										name="avatar"
+	                  placeholder="http://..."
+	                />
+	              </div>
+	            </li>
+	            <li class="list-group-item">
+	              <div class="mb-1">
+	                <label class="form-label"
+	                  >Email address</label
+	                >
+	                <input
+	                  type="email"
+	                  class="form-control"
+										name="email"
+	                />
+	              </div>
+	            </li>
+	            <li class="list-group-item">
+	              <div class="mb-1">
+	                <label class="form-label"
+	                  >Password</label
+	                >
+	                <input
+	                  type="password"
+	                  class="form-control"
+										name="password"
+	                />
+	              </div>
+	            </li>
+	            <li class="list-group-item">
+	              <button class="btn btn-primary ms-1">Signup</button>
+	            </li>
+	          </ul>
+	        </form>
+	        <!-- end signup form -->
+	        <!-- login line -->
+	        <p class="ms-3">Already have an account? <a href="/auth/login">Login</a></p>
+					<p class="ms-3">Just browsing? <a href="/houses">View Houses</a></p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>
