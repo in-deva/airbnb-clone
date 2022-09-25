@@ -69,6 +69,14 @@ take background image off of body on login/signup, put on a div - why though? it
   object-fit: cover;
 }
 
+.house-img {
+  /* height: 30vh; */
+  height: 30vh;
+  border-radius: 1%;
+  /* min-width: 30vw; */
+  object-fit: cover;
+}
+
 .card-img {
   overflow: hidden;
 }
@@ -87,6 +95,11 @@ take background image off of body on login/signup, put on a div - why though? it
   /* , 0.75rem); */
   margin-right: auto;
   margin-left: auto;
+}
+
+.display-inline {
+  display: inline;
+  background-color: yellow;
 }
 
 #filters > .row > * {
