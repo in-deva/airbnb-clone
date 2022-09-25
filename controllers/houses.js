@@ -49,11 +49,16 @@ router.get('/', async (req, res) => {
 router.get('/create', async (req, res) => {
   // console.log(houses/create get route)
   try {
+    let photosX = []
+    for (i = 0; i < 9; i++) {
+      photosX.push('')
+    }
     if (req.isAuthenticated()) {
       res.render('../views/houses/create', {
         user: req.user.name,
         auth: req.isAuthenticated(),
-        hostID: req.user._id
+        hostID: req.user._id,
+        photosX
       })
     } else {
       res.redirect('/auth/login')

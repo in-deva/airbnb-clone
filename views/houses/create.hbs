@@ -54,7 +54,7 @@
       <!-- Photos -->
       <div class="mb-3">
         <label class="form-label">Add Photos (up to 9)</label>
-				<!-- ! make handlebars repeat the block 9 times ? would need empty array of 9 to count through -->
+				{{#each photosX as |photo|}}
 	        <input
 						name="photos"
 	          type="text"
@@ -62,61 +62,7 @@
 	          placeholder="http://..."
 	          aria-describedby="."
 	        />
-        <input
-					name="photos"
-          type="text"
-          class="mb-2 form-control"
-          placeholder="http://..."
-          aria-describedby="."
-        />
-        <input
-					name="photos"
-          type="text"
-          class="mb-2 form-control"
-          placeholder="http://..."
-          aria-describedby="."
-        />
-        <input
-					name="photos"
-          type="text"
-          class="mb-2 form-control"
-          placeholder="http://..."
-          aria-describedby="."
-        />
-        <input
-          type="text"
-          class="mb-2 form-control"
-          placeholder="http://..."
-          aria-describedby="."
-        />
-        <input
-					name="photos"
-          type="text"
-          class="mb-2 form-control"
-          placeholder="http://..."
-          aria-describedby="."
-        />
-        <input
-					name="photos"
-          type="text"
-          class="mb-2 form-control"
-          placeholder="http://..."
-          aria-describedby="."
-        />
-        <input
-					name="photos"
-          type="text"
-          class="mb-2 form-control"
-          placeholder="http://..."
-          aria-describedby="."
-        />
-        <input
-					name="photos"
-          type="text"
-          class="mb-2 form-control"
-          placeholder="http://..."
-          aria-describedby="."
-        />
+				{{/each}}
       </div>
       <button class="btn btn-primary">Submit</button>
     </form>
