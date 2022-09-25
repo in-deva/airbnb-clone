@@ -17,8 +17,11 @@ router.get('/', async (req, res) => {
       let noListings = listings.length == 0 ? true : false
       console.log(noListings)
       res.render('../views/profile', {
-        userFull: req.user,
-        user: req.user.name, // needs to be ditched
+        user: {
+          name: req.user.name,
+          avatar: req.user.avatar,
+          email: req.user.email
+        },
         auth: req.isAuthenticated(), // !!! what's this for again?
         listings,
         noListings

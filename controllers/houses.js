@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
     if (req.isAuthenticated()) {
       res.render('houses/list', {
         // !!! change to just user & update templates
-        user: req.user.name,
+        user: { name: req.user.name, avatar: req.user.avatar },
         auth: req.isAuthenticated(),
         houses
       })
@@ -55,7 +55,7 @@ router.get('/create', async (req, res) => {
     }
     if (req.isAuthenticated()) {
       res.render('../views/houses/create', {
-        user: req.user.name,
+        user: { name: req.user.name, avatar: req.user.avatar },
         auth: req.isAuthenticated(),
         hostID: req.user._id,
         photosX
@@ -90,7 +90,7 @@ router.get('/:id', async (req, res) => {
         'author'
       )
       res.render('../views/houses/one', {
-        user: req.user.name,
+        user: { name: req.user.name, avatar: req.user.avatar },
         auth: req.isAuthenticated(),
         house, // !!! - can I do await in-line here?
         hostName: house.host.name,
@@ -120,7 +120,7 @@ router.get('/:id/edit', async (req, res) => {
       // console.log('authed')
       let house = await Houses.findById(req.query.listingID)
       res.render('../views/houses/edit', {
-        user: req.user.name,
+        user: { name: req.user.name, avatar: req.user.avatar },
         auth: req.isAuthenticated(),
         house
       })

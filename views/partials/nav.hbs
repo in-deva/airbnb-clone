@@ -11,7 +11,6 @@
 				alt="airbnb logo"
 			/>
 		</a>
-		<!-- !!! make image and text align in account button -->
 		<!-- if logged in -->
 		{{#if auth}}
 			<div class="d-flex-inline">
@@ -19,11 +18,11 @@
 					href="/profile"
 					class="btn btn-outline-secondary d-flex-inline align-items-center me-2"
 					><img
-						src="https://randomuser.me/api/portraits/men/11.jpg"
-						alt=""
+						src="{{user.avatar}}"
+						alt="account avatar"
 						class="avatar-img"
 					/>
-					<span>{{user}}</span></a
+					<span>{{user.name}}</span></a
 				>
 				<a href="/auth/logout" class="btn btn-outline-secondary">Logout</a>
 			</div>
