@@ -12,13 +12,16 @@ router.get('/', async (req, res) => {
       console.log('authed')
       // Use the GET /profile to also find in the database all houses that are listed by the user (using the host field),
       // !!! sort them on something? add date to model and sort on most recent?
-      console.log(req.user._id)
+      // console.log(req.user._id)
       let listings = await Houses.find({ host: req.user._id })
+      let noListings = listings.length == 0 ? true : false
+      console.log(noListings)
       res.render('../views/profile', {
         userFull: req.user,
         user: req.user.name, // needs to be ditched
         auth: req.isAuthenticated(), // !!! what's this for again?
-        listings
+        listings,
+        noListings
       })
     } else {
       console.log('not logged in')

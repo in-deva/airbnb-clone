@@ -54,50 +54,51 @@
       <div class="col-8 ps-5">
         <!-- listings section -->
         <h2 class="border-bottom mb-3 pb-3">My Listings</h2>
-				<!-- !!! this can just be a link with same class as button, right? not in form, pointless as button -->
 				<a href="houses/create">
         	<button class="btn btn-primary mb-3">
           	List a House
         	</button>
 				</a>
-				<!-- !!! handlebars if logic required here - if (!listings) *no listings* else *with listings block* -->
-        <!-- no listings -->
-        <div class="card mb-3">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">You don't have any houses listed</li>
-          </ul>
-        </div>
-        <!-- with listings -->
-				{{#each listings as |listing|}}
-        	<div class="card mb-3" style="max-width: 540px;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="{{listing.photos.[0]}}" class="img-fluid rounded-start" alt="..." />
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">{{listing.title}}</h5>
-								<!-- listing rooms and rate inline - match block with houses card -->
-								<span>{{listing.location}} Rooms *bulletpoint* ${{listing.price}}/night</span>
-                <p class="card-text">
-                  {{listing.description}}
-                </p>
-								<!-- !!! this route isn't made yet -->
-								<form action="houses/{{listing._id}}/edit" method="get">
-									<button name="listingID" value="{{listing._id}}" class="btn btn-primary mb-3">Edit</button>
-								<!-- <a href="houses/{{listing._id}}/edit" class="btn btn-primary mb-3">
-									Edit
-								</a> -->
-								</form>
+				{{#if noListings}}
+	        <!-- no listings -->
+	        <div class="card mb-3">
+	          <ul class="list-group list-group-flush">
+	            <li class="list-group-item">You don't have any houses listed</li>
+	          </ul>
+	        </div>
+				{{else}}
+	        <!-- with listings -->
+					{{#each listings as |listing|}}
+	        	<div class="card mb-3" style="max-width: 540px;">
+	          <div class="row g-0">
+	            <div class="col-md-4">
+	              <img src="{{listing.photos.[0]}}" class="img-fluid rounded-start" alt="..." />
+	            </div>
+	            <div class="col-md-8">
+	              <div class="card-body">
+	                <h5 class="card-title">{{listing.title}}</h5>
+									<!-- listing rooms and rate inline - match block with houses card -->
+									<span>{{listing.location}} Rooms *bulletpoint* ${{listing.price}}/night</span>
+	                <p class="card-text">
+	                  {{listing.description}}
+	                </p>
+									<!-- !!! this route isn't made yet -->
+									<form action="houses/{{listing._id}}/edit" method="get">
+										<button name="listingID" value="{{listing._id}}" class="btn btn-primary mb-3">Edit</button>
+									<!-- <a href="houses/{{listing._id}}/edit" class="btn btn-primary mb-3">
+										Edit
+									</a> -->
+									</form>
 
-								<a href="houses/{{listing._id}}" class="btn btn-primary mb-3">
-									View
-								</a>
-              </div>
-            </div>
-          </div>
-        	</div>
-				{{/each}}
+									<a href="houses/{{listing._id}}" class="btn btn-primary mb-3">
+										View
+									</a>
+	              </div>
+	            </div>
+	          </div>
+	        	</div>
+					{{/each}}
+				{{/if}}
       </div>
       <!-- end listing section -->
     </div>
