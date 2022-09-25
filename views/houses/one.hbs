@@ -90,7 +90,7 @@
             <!-- reviews -->
             <div class="" name="listing-reviews">
               <!-- review detail/form -->
-              <h1>X reviews</h1>
+              <h1>{{score}} reviews</h1>
               <form action="/reviews" method="post">
 								<input type="hidden" value="{{house._id}}" name="house" />
                 <span>Leave a review</span>
@@ -129,6 +129,7 @@
 	                            {{review.date}}
 	                          </div>
 	                          <div class="col text-end">
+															<p>{{review.rating}}</p>
 	                            icon thumbs up/down
 	                          </div>
 	                        </div>
@@ -155,7 +156,7 @@
             <h5 class="card-title">${{house.price}}/night</h5>
             <h6 class="card-subtitle mb-2 text-muted">
               <span>
-                <i class="fa-solid fa-thumbs-up mx-2 my-2"></i> X
+                <i class="fa-solid fa-thumbs-up mx-2 my-2"></i> {{score}}
                 Reviews</span
               >
             </h6>
