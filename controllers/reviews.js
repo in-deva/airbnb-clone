@@ -3,17 +3,19 @@ const express = require('express')
 const router = express.Router()
 const Reviews = require('../models/reviews')
 
+// should this root be post or get?
 // Get root
 router.post('/', async (req, res) => {
   try {
-    // console.log('reviews get route')
+    console.log('reviews get route')
     if (req.isAuthenticated()) {
+      console.log(req.body.rating)
       // Use the POST `/reviews` controller to create a review, then redirect to the house page.
-      await Reviews.create({
-        author: req.user._id,
-        house: req.body.house,
-        description: req.body.description
-      })
+      // await Reviews.create({
+      //   author: req.user._id,
+      //   house: req.body.house,
+      //   description: req.body.description
+      // })
       // console.log('review created')
       res.redirect(`houses/${req.body.house}`)
     } else {
@@ -27,14 +29,14 @@ router.post('/', async (req, res) => {
 })
 
 // Post root
-router.post('/', async (req, res) => {
-  // console.log('reviews post route')
-  try {
-  } catch (err) {
-    // !!!
-    res.redirect('/error')
-  }
-})
+// router.post('/', async (req, res) => {
+//   // console.log('reviews post route')
+//   try {
+//   } catch (err) {
+//     // !!!
+//     res.redirect('/error')
+//   }
+// })
 
 // Export
 module.exports = router

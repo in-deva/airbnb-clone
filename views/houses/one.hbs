@@ -102,10 +102,14 @@
                   ></textarea>
                 </div>
                 <div>
-                  <span>
-                    <i class="fa-solid fa-thumbs-up mx-2 my-2"></i
-                    ><i class="fa-solid fa-thumbs-down"></i
-                  ></span>
+									<input type="radio" class="btn-check" name="rating" id="thumbs-up" autocomplete="off">
+									<input type="radio" name="rating" value="1"/>
+									<label class="btn btn-secondary"><i class="fa-solid fa-thumbs-up mx-2 my-2">
+									</i></label>
+									<input type="radio" class="btn-check" name="rating" id="thumbs-down" autocomplete="off">
+									<input type="radio" name="rating" value="-1" />
+									<label class="btn btn-secondary"><i class="fa-solid fa-thumbs-down">
+									</i></label>
                 </div>
                 <button class="btn btn-primary">Submit</button>
               </form>

@@ -89,6 +89,7 @@ router.get('/:id', async (req, res) => {
       let reviews = await Reviews.find({ house: req.params.id }).populate(
         'author'
       )
+
       res.render('../views/houses/one', {
         user: { name: req.user.name, avatar: req.user.avatar },
         auth: req.isAuthenticated(),
