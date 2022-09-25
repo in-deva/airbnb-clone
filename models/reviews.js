@@ -27,5 +27,6 @@ module.exports = mongoose.model('reviews', {
   },
   rating: {
     type: Number
+    // required: true
   }
 })

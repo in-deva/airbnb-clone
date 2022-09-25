@@ -9,14 +9,14 @@ router.post('/', async (req, res) => {
   try {
     console.log('reviews get route')
     if (req.isAuthenticated()) {
-      console.log(req.body.rating)
       // Use the POST `/reviews` controller to create a review, then redirect to the house page.
-      // await Reviews.create({
-      //   author: req.user._id,
-      //   house: req.body.house,
-      //   description: req.body.description
-      // })
-      // console.log('review created')
+      await Reviews.create({
+        author: req.user._id,
+        house: req.body.house,
+        description: req.body.description,
+        rating: Number(req.body.rating)
+      })
+      console.log('review created')
       res.redirect(`houses/${req.body.house}`)
     } else {
       // console.log('not logged in')
