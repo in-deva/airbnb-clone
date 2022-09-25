@@ -1,9 +1,5 @@
 /*
-!!! Project to do
-
-check all forms, give all form elements a name
-take background image off of body on login/signup, put on a div - why though? it works?
-
+!!! structure this file
  */
 
 * {
@@ -82,8 +78,10 @@ take background image off of body on login/signup, put on a div - why though? it
   object-fit: cover;
 }
 
-.card-img {
+.houses-card {
   overflow: hidden;
+  overflow-y: auto;
+  height: 55vh;
 }
 
 .container,
