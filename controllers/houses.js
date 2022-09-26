@@ -95,18 +95,6 @@ router.get('/:id', async (req, res) => {
       reviews.forEach(review => {
         score += review.rating
       })
-      // then parse that into the Render
-      // then handle in template
-
-      console.log(reviews)
-      console.log(score)
-
-      // await Reviews.create({
-      //   author: req.user._id,
-      //   house: req.body.house,
-      //   description: req.body.description,
-      //   rating: Number(req.body.rating)
-      // })
 
       res.render('../views/houses/one', {
         user: { name: req.user.name, avatar: req.user.avatar },
@@ -116,7 +104,8 @@ router.get('/:id', async (req, res) => {
         hostAvatar: house.host.avatar,
         bookingExists,
         reviews,
-        score
+        score,
+        reviewCount: reviews.length
       })
     } else {
       res.render('../views/houses/one', {

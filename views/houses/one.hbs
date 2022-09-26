@@ -129,8 +129,15 @@
 	                            {{review.date}}
 	                          </div>
 	                          <div class="col text-end">
-															<p>{{review.rating}}</p>
-	                            icon thumbs up/down
+															{{#ifEq review.rating 0}}
+																<p>score 0</p>
+															{{/ifEq}}
+															{{#ifGt review.rating 0}}
+																<i class="fa-solid fa-thumbs-up mx-2 my-2"></i>
+															{{/ifGt}}
+															{{#ifLt review.rating 0}}
+																<i class="fa-solid fa-thumbs-down mx-2 my-2"></i>
+															{{/ifLt}}
 	                          </div>
 	                        </div>
 	                      </div>
@@ -156,7 +163,16 @@
             <h5 class="card-title">${{house.price}}/night</h5>
             <h6 class="card-subtitle mb-2 text-muted">
               <span>
-                <i class="fa-solid fa-thumbs-up mx-2 my-2"></i> {{score}}
+								{{#ifEq score 0}}
+									<p>score 0</p>
+								{{/ifEq}}
+								{{#ifGt score 0}}
+									<i class="fa-solid fa-thumbs-up mx-2 my-2"></i>
+								{{/ifGt}}
+								{{#ifLt score 0}}
+									<i class="fa-solid fa-thumbs-down mx-2 my-2"></i>
+								{{/ifLt}}
+                 {{reviewCount}}
                 Reviews</span
               >
             </h6>
