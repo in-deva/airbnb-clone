@@ -89,6 +89,24 @@ router.get('/:id', async (req, res) => {
       let reviews = await Reviews.find({ house: req.params.id }).populate(
         'author'
       )
+      // above should pull rating now for that house
+      // function to sum all ratings
+      let score = 0
+      reviews.forEach(review => {
+        score += review.rating
+      })
+      // then parse that into the Render
+      // then handle in template
+
+      console.log(reviews)
+      console.log(score)
+
+      // await Reviews.create({
+      //   author: req.user._id,
+      //   house: req.body.house,
+      //   description: req.body.description,
+      //   rating: Number(req.body.rating)
+      // })
 
       res.render('../views/houses/one', {
         user: { name: req.user.name, avatar: req.user.avatar },
@@ -97,7 +115,8 @@ router.get('/:id', async (req, res) => {
         hostName: house.host.name,
         hostAvatar: house.host.avatar,
         bookingExists,
-        reviews
+        reviews,
+        score
       })
     } else {
       res.render('../views/houses/one', {
