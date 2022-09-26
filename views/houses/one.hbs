@@ -90,7 +90,8 @@
             <!-- reviews -->
             <div class="" name="listing-reviews">
               <!-- review detail/form -->
-              <h1>{{score}} reviews</h1>
+							<!-- !!! form blanking if review already sent -->
+              <h1>{{reviewCount}} reviews</h1>
               <form action="/reviews" method="post">
 								<input type="hidden" value="{{house._id}}" name="house" />
                 <span>Leave a review</span>
@@ -126,9 +127,11 @@
 	                      <div class="container p-0">
 	                        <div class="row">
 	                          <div class="col">
+															<!-- !!! fix formatting -->
 	                            {{review.date}}
 	                          </div>
 	                          <div class="col text-end">
+															<!-- !!! styling required + blank for neutral score -->
 															{{#ifEq review.rating 0}}
 																<p>score 0</p>
 															{{/ifEq}}
@@ -163,6 +166,7 @@
             <h5 class="card-title">${{house.price}}/night</h5>
             <h6 class="card-subtitle mb-2 text-muted">
               <span>
+								<!-- !!! same as above -->
 								{{#ifEq score 0}}
 									<p>score 0</p>
 								{{/ifEq}}
@@ -172,7 +176,8 @@
 								{{#ifLt score 0}}
 									<i class="fa-solid fa-thumbs-down mx-2 my-2"></i>
 								{{/ifLt}}
-                 {{reviewCount}}
+								<!-- !!! needs s added/removed if 1 -->
+                {{reviewCount}}
                 Reviews</span
               >
             </h6>
