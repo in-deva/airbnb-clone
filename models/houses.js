@@ -28,10 +28,6 @@ module.exports = mongoose.model('houses', {
   },
   photos: {
     type: []
-    // [{
-    // 	type: String
-    // }]
-    // array 'of text'? !!!
   },
   host: {
     type: ObjectId,

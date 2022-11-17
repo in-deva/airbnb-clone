@@ -1,13 +1,13 @@
 // Packages
 const express = require('express')
 const router = express.Router()
+// Models
 const Houses = require('../models/houses')
 const Bookings = require('../models/bookings')
 const Reviews = require('../models/reviews')
 
 // Root
 router.get('/', async (req, res) => {
-  // console.log('houses get route')
   try {
     // if query set filter object else blank object
     let query = req.query.filtering
@@ -47,7 +47,6 @@ router.get('/', async (req, res) => {
 
 // Get create
 router.get('/create', async (req, res) => {
-  // console.log(houses/create get route)
   try {
     let photosX = []
     for (i = 0; i < 9; i++) {
@@ -70,7 +69,6 @@ router.get('/create', async (req, res) => {
 
 // Get :id
 router.get('/:id', async (req, res) => {
-  // console.log('houses/:id get route')
   try {
     let house = await Houses.findById(req.params.id).populate('host')
     // Render the houses/one template, passing the house object
@@ -123,10 +121,8 @@ router.get('/:id', async (req, res) => {
 
 // Get :id/edit
 router.get('/:id/edit', async (req, res) => {
-  // console.log('houses/id/edit get route')
   try {
     if (req.isAuthenticated()) {
-      // console.log('authed')
       let house = await Houses.findById(req.query.listingID)
       res.render('../views/houses/edit', {
         user: { name: req.user.name, avatar: req.user.avatar },
@@ -134,7 +130,6 @@ router.get('/:id/edit', async (req, res) => {
         house
       })
     } else {
-      console.log('not logged in')
       res.redirect('/auth/login')
     }
   } catch (err) {
@@ -144,14 +139,11 @@ router.get('/:id/edit', async (req, res) => {
 
 // Post root
 router.post('/', async (req, res) => {
-  // console.log('houses post route')
   try {
     if (req.isAuthenticated()) {
-      // console.log('authed')
       req.body.host = req.user._id
       // !!! remove nested catch
       try {
-        // console.log('created house')
         await Houses.create(req.body)
         // go to the house page of the newly created house
         let house = await Houses.findOne(req.body)
@@ -160,7 +152,6 @@ router.post('/', async (req, res) => {
         console.log('error - !!! do these properly')
       }
     } else {
-      // console.log('not logged in')
       res.redirect('/auth/login')
     }
   } catch (err) {
@@ -170,10 +161,8 @@ router.post('/', async (req, res) => {
 
 // Patch :id
 router.patch('/:id', async (req, res) => {
-  // console.log('houses/:id patch route')
   try {
     if (req.isAuthenticated()) {
-      // console.log('authed')
       // extract command, clean object for find
       command = req.body.command
       delete req.body.command
@@ -202,14 +191,11 @@ router.patch('/:id', async (req, res) => {
 })
 
 // Delete :id
-// !!!
 router.delete('/:id', async (req, res) => {
-  // console.log('houses delete route')
   try {
     if (req.isAuthenticated()) {
-      // console.log('authed')
+			console.log('does not do anything')
     } else {
-      console.log('not logged in')
       res.redirect('/auth/login')
     }
   } catch (err) {

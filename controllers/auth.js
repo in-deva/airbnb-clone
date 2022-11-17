@@ -1,12 +1,11 @@
 // Packages
 const express = require('express')
 const router = express.Router()
-
+// Models
 const Users = require('../models/users')
 
 // Root
 router.get('/', async (req, res) => {
-  // console.log('auth get route (houses redirect)')
   try {
     res.redirect('/houses')
   } catch (err) {
@@ -17,7 +16,6 @@ router.get('/', async (req, res) => {
 
 // Get login
 router.get('/login', async (req, res) => {
-  // console.log('login get route')
   try {
     // !!! if alrady authed, redirect to houses page
     res.render('../views/login')
@@ -29,9 +27,7 @@ router.get('/login', async (req, res) => {
 
 // Get signup
 router.get('/signup', async (req, res) => {
-  // console.log('signup get route')
   try {
-    // render
     res.render('../views/signup')
   } catch (err) {
     // !!! properly
@@ -41,19 +37,15 @@ router.get('/signup', async (req, res) => {
 
 // Post login
 router.post('/login', async (req, res) => {
-  // console.log('login post route')
   try {
-    // find user with email and password match
     let user = await Users.findOne(req.body)
     if (user) {
-      // login match
       req.login(user, err => {
         if (err) {
           throw 'error'
           //!!!properly - user already exists, go login, or else...
           // email or password is incorrect (if no match found, display this... (with signup/forgot passwrod option))
         }
-        // console.log('logged in')
         res.redirect('../houses')
       })
     } else {
@@ -67,11 +59,8 @@ router.post('/login', async (req, res) => {
 
 // Post signup
 router.post('/signup', async (req, res) => {
-  // console.log('signup post route')
   try {
     let user = await Users.create(req.body)
-    // console.log('user created')
-    // run identical login process
     // !!! (exact copy, make better)
     // !!! display better - user already exists - login?
     user = await Users.findOne(req.body)
@@ -94,7 +83,6 @@ router.post('/signup', async (req, res) => {
 
 // Get logout
 router.get('/logout', async (req, res) => {
-  // console.log('logout get route')
   try {
     req.logout()
     req.session.destroy(err => {

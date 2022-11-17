@@ -2,9 +2,8 @@
 const express = require('express')
 const router = express.Router()
 
-// Get ...
+// Get index
 router.get('/', async (req, res) => {
-  // console.log('index get route')
   try {
     res.redirect('/houses')
   } catch (err) {

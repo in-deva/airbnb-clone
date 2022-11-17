@@ -1,15 +1,13 @@
 // Packages
 const express = require('express')
 const router = express.Router()
+// Models
 const Bookings = require('../models/bookings')
 
 // Post ...
 router.post('/', async (req, res) => {
-  console.log('bookings post route')
   try {
     if (req.isAuthenticated()) {
-      console.log('authed')
-      // create booking
       let booking = {
         author: req.user._id,
         house: req.body.house,
@@ -18,7 +16,6 @@ router.post('/', async (req, res) => {
       await Bookings.create(booking)
       res.redirect(`/houses/${req.body.house}`)
     } else {
-      console.log('not logged in')
       res.redirect('/auth/login')
     }
   } catch (err) {
